@@ -99,7 +99,7 @@ export function useMainReviews() {
       setIsLoading(true);
       setError(null);
       
-  const response = await fetch('http://localhost:3001/api/reviews');
+  const response = await fetch('/api/reviews');
       if (!response.ok) {
         throw new Error('Failed to fetch reviews');
       }
@@ -144,7 +144,7 @@ export function useMainReviews() {
       setIsLoading(true);
       setError(null);
       
-  const response = await fetch('http://localhost:3001/api/reviews', {
+  const response = await fetch('/api/reviews', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
