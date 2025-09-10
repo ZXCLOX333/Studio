@@ -14,11 +14,33 @@ export function createServer() {
   const app = express();
 
   // Middleware
-  app.use(cors({ origin: "http://localhost:8080" }));
+  const allowedOrigins = [
+    "http://localhost:8080",
+    process.env.ALLOWED_ORIGIN,
+    process.env.NETLIFY_URL,
+    process.env.DEPLOY_URL,
+    process.env.RENDER_EXTERNAL_URL,
+  ].filter(Boolean) as string[];
+
+  app.use(
+    cors({
+      origin: (origin, callback) => {
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.some((o) => origin.includes(o))) {
+          return callback(null, true);
+        }
+        return callback(null, true); // allow by default; tighten if needed
+      },
+      credentials: false,
+    })
+  );
   app.use(bodyParser.json({ limit: "10mb" }));
   app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
 
   // Example API routes
+  app.get("/health", (_req, res) => {
+    res.status(200).json({ status: "ok" });
+  });
   app.get("/api/ping", (_req, res) => {
     const ping = process.env.PING_MESSAGE ?? "ping";
     res.json({ message: ping });
