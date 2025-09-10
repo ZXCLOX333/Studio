@@ -410,9 +410,9 @@ export default function Index() {
   // Фіксовані відео для блоків
   const blockVideos = [
     "/videos/video1.mp4",
-    "/videos/video2.mp4",
     "/videos/video3.mp4",
-    "/videos/video4.mp4"
+    "/videos/video4.mp4",
+    "/videos/video4(1).mp4"
   ];
   
   // Функція для обробки кліку по блоку - спрощена версія анімації
@@ -692,7 +692,7 @@ export default function Index() {
       style={{ overflow: "hidden" }}
     >
       {/* Hero Section */}
-      <section className="relative min-h-screen lg:h-[1024px] overflow-hidden">
+      <section id="home" className="relative min-h-screen lg:h-[1024px] overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center">
           <video 
             ref={activeVideoRef}
@@ -1559,9 +1559,11 @@ export default function Index() {
             <p className="text-white font-roboto text-center text-xs sm:text-sm lg:text-base">© 2023 - 2025 Garyacha golka</p>
 
             <div className="flex gap-3 sm:gap-4 lg:gap-5">
+              <a href="https://t.me/Galinka28830" target="_blank" rel="noopener noreferrer">
               <svg width="24" height="24" className="sm:w-6 sm:h-6 lg:w-8 lg:h-8" viewBox="0 0 32 33" fill="none">
                 <path d="M16.0003 3.1665C8.64033 3.1665 2.66699 9.13984 2.66699 16.4998C2.66699 23.8598 8.64033 29.8332 16.0003 29.8332C23.3603 29.8332 29.3337 23.8598 29.3337 16.4998C29.3337 9.13984 23.3603 3.1665 16.0003 3.1665ZM22.187 12.2332C21.987 14.3398 21.1203 19.4598 20.6803 21.8198C20.4937 22.8198 20.1203 23.1532 19.7737 23.1932C19.0003 23.2598 18.4137 22.6865 17.667 22.1932C16.4937 21.4198 15.827 20.9398 14.6937 20.1932C13.3737 19.3265 14.227 18.8465 14.987 18.0732C15.187 17.8732 18.6003 14.7665 18.667 14.4865C18.6763 14.4441 18.675 14.4001 18.6634 14.3582C18.6518 14.3164 18.6301 14.2781 18.6003 14.2465C18.5203 14.1798 18.4137 14.2065 18.3203 14.2198C18.2003 14.2465 16.3337 15.4865 12.6937 17.9398C12.1603 18.2998 11.6803 18.4865 11.2537 18.4732C10.7737 18.4598 9.86699 18.2065 9.18699 17.9798C8.34699 17.7132 7.69366 17.5665 7.74699 17.0998C7.77366 16.8598 8.10699 16.6198 8.73366 16.3665C12.627 14.6732 15.2137 13.5532 16.507 13.0198C20.2137 11.4732 20.9737 11.2065 21.4803 11.2065C21.587 11.2065 21.8403 11.2332 22.0003 11.3665C22.1337 11.4732 22.1737 11.6198 22.187 11.7265C22.1737 21.8065 22.2003 12.0465 22.187 12.2332Z" fill="#E7E6E6"/>
               </svg>
+              </a>
 
               <a href="https://www.instagram.com/tattoo_garyacha_golka?igsh=OGJ2ZmY3NGs5ajVn" target="_blank" rel="noopener noreferrer">
                 <svg width="24" height="24" className="sm:w-6 sm:h-6 lg:w-8 lg:h-8" viewBox="0 0 32 33" fill="none">
@@ -1578,14 +1580,14 @@ export default function Index() {
           <div className="flex flex-col lg:flex-row justify-between gap-6 sm:gap-8">
             <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 lg:gap-24">
               <div className="space-y-3 sm:space-y-4 lg:space-y-6">
-                <a href="#" className="block text-white font-roboto text-xs sm:text-sm lg:text-base">Main</a>
-                <a href="#" className="block text-white font-roboto text-xs sm:text-sm lg:text-base">Why us</a>
-                <a href="#" className="block text-white font-roboto text-xs sm:text-sm lg:text-base">Gallery</a>
+                <a href="#home" className="block text-white font-roboto text-xs sm:text-sm lg:text-base">Main</a>
+                <a href="#why-us" className="block text-white font-roboto text-xs sm:text-sm lg:text-base">Why us</a>
+                <a href="#works" className="block text-white font-roboto text-xs sm:text-sm lg:text-base">Gallery</a>
               </div>
 
               <div className="space-y-3 sm:space-y-4 lg:space-y-6">
-                <a href="#" className="block text-white font-roboto text-xs sm:text-sm lg:text-base">About us</a>
-                <a href="#" className="block text-white font-roboto text-xs sm:text-sm lg:text-base">Review</a>
+                <a href="#about" className="block text-white font-roboto text-xs sm:text-sm lg:text-base">About us</a>
+                <a href="#reviews" className="block text-white font-roboto text-xs sm:text-sm lg:text-base">Review</a>
               </div>
             </div>
 
