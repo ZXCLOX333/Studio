@@ -1,0 +1,755 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Стилі для відео на задньому фоні */
+.video-background {
+  transition: opacity 0.5s;
+}
+
+/* Стилі для скрол-бару у відгуках */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 165, 0, 0.5);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 165, 0, 0.7);
+}
+
+/* Приховуємо скрол-бар у відгуках */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.custom-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Адаптивні стилі */
+@media (max-width: 1280px) {
+  .container {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+  
+  .interactive-block {
+    width: 100% !important;
+    max-width: 350px;
+    margin: 0 auto 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 15px;
+  }
+  
+  nav {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  
+  .interactive-block {
+    max-width: 300px;
+  }
+  
+  /* Зберігаємо ПК-подібний вигляд для планшетів */
+  .hero-content {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+  }
+  
+  .nav-frame {
+    width: 80% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 10px;
+  }
+  
+  nav {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  
+  .interactive-block {
+    max-width: 280px;
+    display: flex !important;
+  }
+  
+  /* Зберігаємо ПК-подібний вигляд для планшетів */
+  .hero-content {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+  }
+  
+  /* Показуємо інтерактивні блоки на планшетах */
+  .lg\:block {
+    display: block !important;
+  }
+  
+  /* Приховуємо мобільне меню на планшетах */
+  .lg\:hidden {
+    display: none !important;
+  }
+  
+  /* Показуємо десктопне меню на планшетах */
+  .hidden.lg\:flex {
+    display: flex !important;
+  }
+}
+
+/* Виправлення для діапазону 1024-1280px */
+@media (min-width: 1024px) and (max-width: 1280px) {
+  /* Показуємо хедер з іконками для всіх адаптивів */
+  .nav-frame {
+    display: flex !important;
+  }
+  
+  /* Виправляємо відступи для секцій */
+  #why-us {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    margin-left: 0 !important;
+  }
+  
+  #works {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    margin-left: 0 !important;
+  }
+  
+  #about {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  
+  #contacts {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  
+  /* Виправляємо заголовки */
+  #why-us h2,
+  #works h2,
+  #about h2,
+  #contacts h2 {
+    margin-left: 0 !important;
+    text-align: center !important;
+  }
+  
+  /* Виправляємо галерею */
+  #works .w-full.lg\:w-\[838px\] {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+  
+  /* Показуємо планшетну галерею */
+  #works .xl\:hidden {
+    display: grid !important;
+  }
+  
+  /* Приховуємо десктопну галерею */
+  #works .hidden.xl\:block {
+    display: none !important;
+  }
+  
+  /* Показуємо бічні картки для планшета зліва */
+  .hidden.md\:flex.lg\:hidden {
+    display: flex !important;
+  }
+  
+  /* Виправляємо горизонтальний layout для секцій */
+  #why-us .flex-col.md\:flex-row,
+  #about .flex-col.md\:flex-row {
+    flex-direction: row !important;
+  }
+  
+  /* Виправляємо вирівнювання тексту */
+  #why-us .text-center.md\:text-left,
+  #about .text-center.md\:text-left {
+    text-align: left !important;
+  }
+  
+  /* Виправляємо відступи для зображень */
+  #why-us img,
+  #about img {
+    margin: 0 auto !important;
+  }
+  
+  /* Виправляємо розміри зображень */
+  #why-us .w-full.max-w-\[300px\],
+  #about .w-full.max-w-\[300px\] {
+    max-width: 300px !important;
+  }
+}
+
+/* Mobile-specific styles */
+@media (max-width: 640px) {
+  /* Mobile navigation */
+  .mobile-menu {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  /* Приховуємо всі side cards на мобільних пристроях */
+  [data-cards="tablet"],
+  [data-cards="desktop"],
+  [data-cards="desktop-only"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+  
+  /* Додатково приховуємо через CSS класи */
+  .hidden.md\:flex.lg\:hidden,
+  .hidden.lg\:flex.2xl\:hidden,
+  .hidden.2xl\:block {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+  
+  /* Mobile hero adjustments */
+  .hero-section {
+    min-height: 100vh;
+  }
+  
+  /* Mobile side cards */
+  .mobile-side-cards {
+    position: absolute;
+    bottom: 80px;
+    left: 16px;
+    right: 16px;
+    z-index: 10;
+  }
+  
+  /* Mobile stats */
+  .mobile-stats {
+    height: 100px;
+    padding: 0 16px;
+  }
+  
+  /* Mobile typography */
+  .mobile-title {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+  
+  .mobile-subtitle {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  
+  /* Mobile spacing */
+  .mobile-section {
+    padding: 40px 16px;
+  }
+  
+  .mobile-gap {
+    gap: 16px;
+  }
+  
+  /* Mobile gallery */
+  .mobile-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  
+  /* Mobile reviews */
+  .mobile-reviews {
+    padding: 0 16px;
+  }
+  
+  .mobile-review-card {
+    min-width: 280px;
+    max-width: 100%;
+  }
+  
+  /* Mobile contact form */
+  .mobile-contact {
+    padding: 0 16px;
+  }
+  
+  .mobile-form {
+    gap: 16px;
+  }
+}
+
+/* Tablet-specific styles */
+@media (min-width: 641px) and (max-width: 1023px) {
+  /* Tablet navigation - використовуємо хедер з іконками */
+  .nav-frame {
+    display: flex !important;
+  }
+  
+  /* Бічні картки зліва для планшета */
+  .hidden.md\:flex.lg\:hidden {
+    display: flex !important;
+  }
+  
+  /* Tablet hero */
+  .tablet-hero {
+    min-height: 80vh;
+  }
+  
+  /* Tablet side cards */
+  .tablet-side-cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    bottom: 100px;
+  }
+  
+  /* Tablet sections */
+  .tablet-section {
+    padding: 60px 32px;
+  }
+  
+  /* Tablet gallery */
+  .tablet-gallery {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  /* Tablet reviews */
+  .tablet-reviews {
+    padding: 0 32px;
+  }
+  
+  /* Tablet contact */
+  .tablet-contact {
+    padding: 0 32px;
+  }
+}
+
+/* Стилі для анімації інтерактивних блоків */
+.interactive-block {
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  z-index: 1;
+  background-color: rgba(255, 165, 0, 0.5) !important; /* Менш непрозорий фон */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3) !important; /* Менш виразна тінь */
+}
+
+.interactive-block:hover {
+  transform: scale(1.01);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3) !important;
+}
+
+.interactive-block img {
+  display: block;
+  width: 140px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.interactive-block.active {
+  opacity: 0;
+  transform: translateX(-300px);
+  z-index: 10;
+}
+
+.interactive-block.falling-block {
+  transform: translateY(140px);
+  transition-delay: 0.8s;
+}
+
+/* Нові анімації для блоків */
+.interactive-block.falling-new-block {
+  animation: fallingNewBlock 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation-fill-mode: forwards;
+  z-index: 5;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.interactive-block.domino-fall {
+  animation: dominoFall 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation-fill-mode: forwards;
+  z-index: 4;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.interactive-block.domino-fall-delayed {
+  animation: dominoFallDelayed 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation-delay: 0.2s;
+  animation-fill-mode: forwards;
+  z-index: 3;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+@keyframes dominoFallDelayed {
+  0% {
+    transform: translateY(140px);
+    z-index: 3;
+  }
+  60% {
+    transform: translateY(10px);
+    z-index: 3;
+  }
+  80% {
+    transform: translateY(5px);
+    z-index: 3;
+  }
+  100% {
+    transform: translateY(0);
+    z-index: 3;
+  }
+}
+
+@keyframes fallingNewBlock {
+  0% {
+    transform: translateY(-200px);
+    opacity: 0;
+  }
+  70% {
+    transform: translateY(20px);
+    opacity: 1;
+  }
+  85% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes dominoFall {
+  0% {
+    transform: translateY(0);
+    z-index: 2;
+  }
+  60% {
+    transform: translateY(140px);
+    z-index: 2;
+  }
+  80% {
+    transform: translateY(120px);
+    z-index: 2;
+  }
+  90% {
+    transform: translateY(135px);
+    z-index: 2;
+  }
+  100% {
+    transform: translateY(140px);
+    z-index: 2;
+  }
+}
+
+/* Mobile menu animations */
+.mobile-menu-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.mobile-menu-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.mobile-menu-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.mobile-menu-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* Responsive typography */
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 1.5rem !important;
+    line-height: 1.2;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem !important;
+    line-height: 1.4;
+  }
+  
+  .section-title {
+    font-size: 1.75rem !important;
+    line-height: 1.3;
+  }
+  
+  .section-subtitle {
+    font-size: 1.125rem !important;
+    line-height: 1.4;
+  }
+  
+  .body-text {
+    font-size: 0.875rem !important;
+    line-height: 1.5;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .hero-title {
+    font-size: 2rem !important;
+    line-height: 1.2;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.125rem !important;
+    line-height: 1.4;
+  }
+  
+  .section-title {
+    font-size: 2.25rem !important;
+    line-height: 1.3;
+  }
+  
+  .section-subtitle {
+    font-size: 1.25rem !important;
+    line-height: 1.4;
+  }
+  
+  .body-text {
+    font-size: 1rem !important;
+    line-height: 1.5;
+  }
+}
+
+/* Responsive spacing utilities */
+.mobile-padding {
+  padding: 16px;
+}
+
+.tablet-padding {
+  padding: 24px;
+}
+
+.desktop-padding {
+  padding: 32px;
+}
+
+.mobile-margin {
+  margin: 16px;
+}
+
+.tablet-margin {
+  margin: 24px;
+}
+
+.desktop-margin {
+  margin: 32px;
+}
+
+/* Responsive grid utilities */
+.mobile-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.tablet-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.desktop-grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Responsive flex utilities */
+.mobile-flex-col {
+  flex-direction: column;
+}
+
+.tablet-flex-row {
+  flex-direction: row;
+}
+
+.desktop-flex-row {
+  flex-direction: row;
+}
+
+/* Responsive text alignment */
+.mobile-text-center {
+  text-align: center;
+}
+
+.tablet-text-left {
+  text-align: left;
+}
+
+.desktop-text-left {
+  text-align: left;
+}
+
+/* Responsive image sizing */
+.mobile-img-small {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+}
+
+.tablet-img-medium {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+
+.desktop-img-large {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+}
+
+/* Responsive button sizing */
+.mobile-btn {
+  padding: 12px 24px;
+  font-size: 0.875rem;
+}
+
+.tablet-btn {
+  padding: 16px 32px;
+  font-size: 1rem;
+}
+
+.desktop-btn {
+  padding: 20px 40px;
+  font-size: 1.125rem;
+}
+
+/* Responsive card sizing */
+.mobile-card {
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.tablet-card {
+  padding: 24px;
+  border-radius: 16px;
+}
+
+.desktop-card {
+  padding: 32px;
+  border-radius: 20px;
+}
+
+/* Responsive navigation */
+.mobile-nav {
+  padding: 12px 16px;
+}
+
+.tablet-nav {
+  padding: 16px 24px;
+}
+
+.desktop-nav {
+  padding: 20px 32px;
+}
+
+/* Responsive footer */
+.mobile-footer {
+  padding: 24px 16px;
+}
+
+.tablet-footer {
+  padding: 32px 24px;
+}
+
+.desktop-footer {
+  padding: 40px 32px;
+}
+
+/* Responsive modal */
+.mobile-modal {
+  width: 90%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+.tablet-modal {
+  width: 80%;
+  max-width: 500px;
+  padding: 24px;
+}
+
+.desktop-modal {
+  width: 70%;
+  max-width: 600px;
+  padding: 32px;
+}
+
+/* Responsive form */
+.mobile-form {
+  gap: 16px;
+}
+
+.tablet-form {
+  gap: 20px;
+}
+
+.desktop-form {
+  gap: 24px;
+}
+
+/* Responsive gallery */
+.mobile-gallery {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.tablet-gallery {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.desktop-gallery {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* Responsive reviews */
+.mobile-reviews {
+  padding: 0 16px;
+}
+
+.tablet-reviews {
+  padding: 0 24px;
+}
+
+.desktop-reviews {
+  padding: 0 32px;
+}
+
+/* Responsive contact */
+.mobile-contact {
+  padding: 0 16px;
+}
+
+.tablet-contact {
+  padding: 0 24px;
+}
+
+.desktop-contact {
+  padding: 0 32px;
+}

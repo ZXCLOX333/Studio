@@ -1,0 +1,216 @@
+/* Цей файл більше не використовується, всі стилі перенесено в styles.css */
+
+/* Анімація для відео на задньому фоні */
+.video-background {
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Анімація падіння блоків */
+@keyframes fallDown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(140px);
+  }
+}
+
+.falling-block {
+  animation: fallDown 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Стилі для активної картки відгуку */
+.active-card {
+  outline: 2px solid rgba(255, 153, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Стилізація скролбару для відгуків */
+@layer utilities {
+  .overflow-y-auto {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 153, 0, 0.5) transparent;
+  }
+
+  .overflow-y-auto::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .overflow-y-auto::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .overflow-y-auto::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 153, 0, 0.5);
+    border-radius: 20px;
+  }
+}
+
+@layer base {
+  /**
+   * Tailwind CSS theme
+   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+   * A different format will require also updating the theme in tailwind.config.ts.
+  */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-radial {
+    background: radial-gradient(70.46% 43.92% at 55.69% 50.07%, rgba(217, 217, 217, 0.00) 0%, rgba(0, 0, 0, 0.40) 100%);
+  }
+}
+
+/* Мобільне меню стилі */
+@layer components {
+  .mobile-menu-overlay {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  .mobile-menu-item {
+    transition: all 0.3s ease;
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  
+  .mobile-menu-item.animate-in {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
+  /* Анімація для мобільного меню */
+  @keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .mobile-menu-enter {
+    animation: slideInFromLeft 0.3s ease-out forwards;
+  }
+  
+  /* Стилі для мобільної кнопки */
+  .mobile-button {
+    box-shadow: 0 4px 20px rgba(255, 153, 0, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-button:hover {
+    box-shadow: 0 6px 25px rgba(255, 153, 0, 0.4);
+    transform: translateY(-2px);
+  }
+  
+  .mobile-button:active {
+    transform: translateY(0);
+  }
+  
+  /* Приховування скролбару для мобільних side cards */
+  .mobile-cards-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .mobile-cards-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

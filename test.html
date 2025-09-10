@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест API Відгуків</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: vertical;
+            font-family: inherit;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .reviews {
+            margin-top: 30px;
+        }
+        .review {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        .review-text {
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .review-date {
+            color: #666;
+            font-size: 14px;
+        }
+        .error {
+            color: #dc3545;
+            background: #f8d7da;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .success {
+            color: #155724;
+            background: #d4edda;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .loading {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+        }
+        .status {
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .status.online {
+            background: #d4edda;
+            color: #155724;
+        }
+        .status.offline {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Тест API Відгуків</h1>
+        
+        <div id="status" class="status">
+            Перевірка статусу сервера...
+        </div>
+
+        <form id="reviewForm">
+            <div class="form-group">
+                <label for="reviewText">Ваш відгук:</label>
+                <textarea 
+                    id="reviewText" 
+                    placeholder="Напишіть ваш відгук тут..."
+                    required
+                ></textarea>
+            </div>
+            <button type="submit" id="submitBtn">Додати відгук</button>
+        </form>
+
+        <div id="message"></div>
+
+        <div class="reviews">
+            <h2>Відгуки:</h2>
+            <div id="reviewsList">
+                <div class="loading">Завантаження відгуків...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:3001';
+        let isLoading = false;
+
+        // Перевірка статусу сервера
+        async function checkServerStatus() {
+            const statusDiv = document.getElementById('status');
+            try {
+                const response = await fetch(`${API_BASE}/api/ping`);
+                if (response.ok) {
+                    statusDiv.className = 'status online';
+                    statusDiv.textContent = '✅ Сервер працює';
+                } else {
+                    throw new Error('Server error');
+                }
+            } catch (error) {
+                statusDiv.className = 'status offline';
+                statusDiv.textContent = '❌ Сервер недоступний. Переконайтеся, що запущений: npm run dev:server';
+            }
+        }
+
+        // Отримання відгуків
+        async function loadReviews() {
+            const reviewsList = document.getElementById('reviewsList');
+            
+            try {
+                isLoading = true;
+                const response = await fetch(`${API_BASE}/api/reviews`);
+                const data = await response.json();
+                
+                if (data.reviews && data.reviews.length > 0) {
+                    reviewsList.innerHTML = data.reviews.map(review => `
+                        <div class="review">
+                            <div class="review-text">${review.text}</div>
+                            <div class="review-date">${new Date(review.createdAt).toLocaleString('uk-UA')}</div>
+                        </div>
+                    `).join('');
+                } else {
+                    reviewsList.innerHTML = '<div class="loading">Поки що немає відгуків. Будьте першим!</div>';
+                }
+            } catch (error) {
+                reviewsList.innerHTML = '<div class="error">Помилка завантаження відгуків</div>';
+            } finally {
+                isLoading = false;
+            }
+        }
+
+        // Додавання відгуку
+        async function addReview(text) {
+            const messageDiv = document.getElementById('message');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            try {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Додавання...';
+                
+                const response = await fetch(`${API_BASE}/api/reviews`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ text })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    messageDiv.innerHTML = '<div class="success">✅ Відгук успішно додано!</div>';
+                    document.getElementById('reviewText').value = '';
+                    await loadReviews(); // Оновлюємо список
+                } else {
+                    throw new Error('Failed to add review');
+                }
+            } catch (error) {
+                messageDiv.innerHTML = '<div class="error">❌ Помилка додавання відгуку</div>';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Додати відгук';
+            }
+        }
+
+        // Обробка форми
+        document.getElementById('reviewForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const text = document.getElementById('reviewText').value.trim();
+            
+            if (text) {
+                await addReview(text);
+            }
+        });
+
+        // Ініціалізація
+        checkServerStatus();
+        loadReviews();
+
+        // Оновлення кожні 30 секунд
+        setInterval(loadReviews, 30000);
+    </script>
+</body>
+</html>
