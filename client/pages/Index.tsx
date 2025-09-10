@@ -410,9 +410,9 @@ export default function Index() {
   // Фіксовані відео для блоків
   const blockVideos = [
     "/videos/video1.mp4",
+    "/videos/video2.mp4",
     "/videos/video3.mp4",
-    "/videos/video4.mp4",
-    "/videos/video4(1).mp4"
+    "/videos/video4.mp4"
   ];
   
   // Функція для обробки кліку по блоку - спрощена версія анімації
