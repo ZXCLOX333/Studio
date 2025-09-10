@@ -408,12 +408,12 @@ export default function Index() {
   const [isAnimating, setIsAnimating] = useState(false);
   
   // Фіксовані відео для блоків
-  const blockVideos: Record<number, string> = {
-    0: "/videos/video1.mp4",
-    1: "/videos/video2.mp4",
-    2: "/videos/video3.mp4",
-    3: "/videos/video4.mp4",
-  };
+  const blockVideos = [
+    "/videos/video1.mp4",
+    "/videos/video2.mp4",
+    "/videos/video3.mp4",
+    "/videos/video4.mp4"
+  ];
   
   // Функція для обробки кліку по блоку - спрощена версія анімації
   const handleBlockClick = (blockId: number) => {
@@ -438,8 +438,7 @@ export default function Index() {
       
       // Змінюємо відео на фіксоване
       if (activeVideoRef.current) {
-        const nextSrc = blockVideos[clickedBlock.id] || "/videos/video1.mp4";
-        activeVideoRef.current.src = nextSrc;
+        activeVideoRef.current.src = blockVideos[clickedBlock.id];
         activeVideoRef.current.load();
         activeVideoRef.current.play();
       }
@@ -693,7 +692,7 @@ export default function Index() {
       style={{ overflow: "hidden" }}
     >
       {/* Hero Section */}
-      <section id="home" className="relative min-h-screen lg:h-[1024px] overflow-hidden">
+      <section className="relative min-h-screen lg:h-[1024px] overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center">
           <video 
             ref={activeVideoRef}
@@ -711,13 +710,11 @@ export default function Index() {
         {/* Navigation - Desktop Only (md and up) */}
         <nav className="hidden md:flex relative z-10 justify-between items-center px-4 sm:px-8 md:px-16 lg:px-[86px] pt-[30px] sm:pt-[40px] lg:pt-[50px]">
           <div className="flex-1">
-            <a href="https://t.me/Galinka28830" target="_blank" rel="noopener noreferrer">
-              <img
-                src="https://api.builder.io/api/v1/image/assets/TEMP/a8b141c5ff34790a508b1bfbea52de61237d467f?width=168"
-                alt="Garyacha Golka Logo"
-                className="w-[60px] h-[42px] sm:w-[70px] sm:h-[49px] lg:w-[84px] lg:h-[59px] rounded-[22px]"
-              />
-            </a>
+            <img
+              src="https://api.builder.io/api/v1/image/assets/TEMP/a8b141c5ff34790a508b1bfbea52de61237d467f?width=168"
+              alt="Garyacha Golka Logo"
+              className="w-[60px] h-[42px] sm:w-[70px] sm:h-[49px] lg:w-[84px] lg:h-[59px] rounded-[22px]"
+            />
           </div>
 
           {/* Centered Orange Navigation Frame - Desktop Only (md and up) */}
@@ -1230,7 +1227,7 @@ export default function Index() {
           <div className="md:flex md:items-start gap-8 lg:gap-16">
             <div className="md:flex-shrink-0">
             <img
-              src="/photo_2025-08-25_23-13-22.jpg"
+              src="https://api.builder.io/api/v1/image/assets/TEMP/f265ff5e73d48434a6a1a7c106bd975fc7e5ce90?width=814"
               alt="Галина Попович"
                 className="w-full max-w-[200px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] h-auto object-cover rounded-[22px] mx-auto md:mx-0 md:mt-0"
             />
@@ -1263,7 +1260,7 @@ export default function Index() {
         style={{ marginLeft: "calc(50% - 50vw)", marginRight: "calc(50% - 50vw)" }}
       >
         <h2
-          className="font-cormorant font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-tattoo-light mb-[20px] sm:mb-[30px] lg:mb-[40px] text-center"
+          className="font-cormorant font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-tattoo-light mb-[20px] sm:mb-[30px] lg:mb-[40px] text-center lg:text-left xl:text-left lg:ml-[475px] xl:ml-[475px]"
         >
           Наші клієнти
         </h2>
@@ -1287,17 +1284,13 @@ export default function Index() {
           {/* 1 ряд */}
           <AutoScrollRow speed={0.5}>
             {reviews1.map((r, i) => (
-              <React.Fragment key={i + r.text.slice(0, 10)}>
-                <TestimonialCard avatar={r.avatar} text={r.text} stars={r.stars} />
-              </React.Fragment>
+              <TestimonialCard key={i + r.text.slice(0, 10)} avatar={r.avatar} text={r.text} stars={r.stars} />
             ))}
           </AutoScrollRow>
           {/* 2 ряд */}
           <AutoScrollRow speed={0.3} reverse>
             {reviews2.map((r, i) => (
-              <React.Fragment key={i + r.text.slice(0, 10)}>
-                <TestimonialCard avatar={r.avatar} text={r.text} stars={r.stars} />
-              </React.Fragment>
+              <TestimonialCard key={i + r.text.slice(0, 10)} avatar={r.avatar} text={r.text} stars={r.stars} />
             ))}
           </AutoScrollRow>
           {/* Додати відгук кнопка */}
@@ -1419,7 +1412,7 @@ export default function Index() {
               </div>
               <div
                 className="w-full flex gap-4 justify-center absolute left-0 right-0"
-                style={{ bottom: 20, marginTop: 0 }}
+                style={{ bottom: 310, marginTop: 0 }}
               >
                 <button
                   type="button"
@@ -1534,7 +1527,7 @@ export default function Index() {
             </div>
 
             <div className="flex gap-4 lg:gap-6 justify-center">
-              <a href="https://t.me/Galinka28830" target="_blank" rel="noopener noreferrer" className="p-2 lg:p-4">
+              <a href="#" className="p-2 lg:p-4">
                 <svg width="62" height="62" viewBox="0 0 62 62" fill="none" className="w-12 h-12 lg:w-[62px] lg:h-[62px]">
                   <path d="M31.0003 5.1665C16.7403 5.1665 2.66699 16.7398 2.66699 30.9998C2.66699 45.2598 16.7403 56.8332 31.0003 56.8332C45.2603 56.8332 56.8337 45.2598 56.8337 30.9998C56.8337 16.7398 45.2603 5.1665 31.0003 5.1665ZM42.987 22.7332C42.5995 26.8148 40.9203 36.7348 40.0678 41.3073C39.7062 43.2448 38.9828 43.8907 38.3112 43.9682C36.8128 44.0973 35.6762 42.9865 34.2295 42.0307C31.9562 40.5323 30.6645 39.6023 28.4687 38.1557C25.9112 36.4765 27.5645 35.5465 29.037 34.0482C29.4245 33.6607 36.0378 27.6415 36.167 27.099C36.1849 27.0168 36.1825 26.9315 36.16 26.8505C36.1375 26.7695 36.0956 26.6951 36.0378 26.634C35.8828 26.5048 35.6762 26.5565 35.4953 26.5823C35.2628 26.634 31.6462 29.0365 24.5937 33.7898C23.5603 34.4873 22.6303 34.849 21.8037 34.8232C20.8737 34.7973 19.117 34.3065 17.7995 33.8673C16.172 33.3507 14.9062 33.0665 15.0095 32.1623C15.0612 31.6973 15.707 31.2323 16.9212 30.7415C24.4645 27.4607 29.4762 25.2907 31.982 24.2573C39.1637 21.2607 40.6362 20.744 41.6178 20.744C41.8245 20.744 42.3153 20.7957 42.6253 21.054C42.8837 21.2607 42.9612 21.5448 42.987 21.7515C42.9612 21.9065 43.0128 22.3715 42.987 22.7332Z" fill="#E7E6E6"/>
                 </svg>
@@ -1557,22 +1550,18 @@ export default function Index() {
       <footer className="bg-[#626262] py-8 sm:py-10 md:py-12 lg:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col lg:flex-row justify-between items-center mb-6 sm:mb-8 lg:mb-12 gap-4 sm:gap-6 lg:gap-0">
-            <a href="https://t.me/Galinka28830" target="_blank" rel="noopener noreferrer">
-              <img
-                src="https://api.builder.io/api/v1/image/assets/TEMP/a8b141c5ff34790a508b1bfbea52de61237d467f?width=168"
-                alt="Garyacha Golka Logo"
-                className="w-[60px] h-[42px] sm:w-[70px] sm:h-[49px] lg:w-[84px] lg:h-[59px] rounded-[22px]"
-              />
-            </a>
+            <img
+              src="https://api.builder.io/api/v1/image/assets/TEMP/a8b141c5ff34790a508b1bfbea52de61237d467f?width=168"
+              alt="Garyacha Golka Logo"
+              className="w-[60px] h-[42px] sm:w-[70px] sm:h-[49px] lg:w-[84px] lg:h-[59px] rounded-[22px]"
+            />
 
             <p className="text-white font-roboto text-center text-xs sm:text-sm lg:text-base">© 2023 - 2025 Garyacha golka</p>
 
             <div className="flex gap-3 sm:gap-4 lg:gap-5">
-              <a href="https://t.me/Galinka28830" target="_blank" rel="noopener noreferrer">
-                <svg width="24" height="24" className="sm:w-6 sm:h-6 lg:w-8 lg:h-8" viewBox="0 0 32 33" fill="none">
-                  <path d="M16.0003 3.1665C8.64033 3.1665 2.66699 9.13984 2.66699 16.4998C2.66699 23.8598 8.64033 29.8332 16.0003 29.8332C23.3603 29.8332 29.3337 23.8598 29.3337 16.4998C29.3337 9.13984 23.3603 3.1665 16.0003 3.1665ZM22.187 12.2332C21.987 14.3398 21.1203 19.4598 20.6803 21.8198C20.4937 22.8198 20.1203 23.1532 19.7737 23.1932C19.0003 23.2598 18.4137 22.6865 17.667 22.1932C16.4937 21.4198 15.827 20.9398 14.6937 20.1932C13.3737 19.3265 14.227 18.8465 14.987 18.0732C15.187 17.8732 18.6003 14.7665 18.667 14.4865C18.6763 14.4441 18.675 14.4001 18.6634 14.3582C18.6518 14.3164 18.6301 14.2781 18.6003 14.2465C18.5203 14.1798 18.4137 14.2065 18.3203 14.2198C18.2003 14.2465 16.3337 15.4865 12.6937 17.9398C12.1603 18.2998 11.6803 18.4865 11.2537 18.4732C10.7737 18.4598 9.86699 18.2065 9.18699 17.9798C8.34699 17.7132 7.69366 17.5665 7.74699 17.0998C7.77366 16.8598 8.10699 16.6198 8.73366 16.3665C12.627 14.6732 15.2137 13.5532 16.507 13.0198C20.2137 11.4732 20.9737 11.2065 21.4803 11.2065C21.587 11.2065 21.8403 11.2332 22.0003 11.3665C22.1337 11.4732 22.1737 11.6198 22.187 11.7265C22.1737 21.8065 22.2003 12.0465 22.187 12.2332Z" fill="#E7E6E6"/>
-                </svg>
-              </a>
+              <svg width="24" height="24" className="sm:w-6 sm:h-6 lg:w-8 lg:h-8" viewBox="0 0 32 33" fill="none">
+                <path d="M16.0003 3.1665C8.64033 3.1665 2.66699 9.13984 2.66699 16.4998C2.66699 23.8598 8.64033 29.8332 16.0003 29.8332C23.3603 29.8332 29.3337 23.8598 29.3337 16.4998C29.3337 9.13984 23.3603 3.1665 16.0003 3.1665ZM22.187 12.2332C21.987 14.3398 21.1203 19.4598 20.6803 21.8198C20.4937 22.8198 20.1203 23.1532 19.7737 23.1932C19.0003 23.2598 18.4137 22.6865 17.667 22.1932C16.4937 21.4198 15.827 20.9398 14.6937 20.1932C13.3737 19.3265 14.227 18.8465 14.987 18.0732C15.187 17.8732 18.6003 14.7665 18.667 14.4865C18.6763 14.4441 18.675 14.4001 18.6634 14.3582C18.6518 14.3164 18.6301 14.2781 18.6003 14.2465C18.5203 14.1798 18.4137 14.2065 18.3203 14.2198C18.2003 14.2465 16.3337 15.4865 12.6937 17.9398C12.1603 18.2998 11.6803 18.4865 11.2537 18.4732C10.7737 18.4598 9.86699 18.2065 9.18699 17.9798C8.34699 17.7132 7.69366 17.5665 7.74699 17.0998C7.77366 16.8598 8.10699 16.6198 8.73366 16.3665C12.627 14.6732 15.2137 13.5532 16.507 13.0198C20.2137 11.4732 20.9737 11.2065 21.4803 11.2065C21.587 11.2065 21.8403 11.2332 22.0003 11.3665C22.1337 11.4732 22.1737 11.6198 22.187 11.7265C22.1737 21.8065 22.2003 12.0465 22.187 12.2332Z" fill="#E7E6E6"/>
+              </svg>
 
               <a href="https://www.instagram.com/tattoo_garyacha_golka?igsh=OGJ2ZmY3NGs5ajVn" target="_blank" rel="noopener noreferrer">
                 <svg width="24" height="24" className="sm:w-6 sm:h-6 lg:w-8 lg:h-8" viewBox="0 0 32 33" fill="none">
@@ -1589,14 +1578,14 @@ export default function Index() {
           <div className="flex flex-col lg:flex-row justify-between gap-6 sm:gap-8">
             <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 lg:gap-24">
               <div className="space-y-3 sm:space-y-4 lg:space-y-6">
-                <a href="#home" className="block text-white font-roboto text-xs sm:text-sm lg:text-base">Main</a>
-                <a href="#why-us" className="block text-white font-roboto text-xs sm:text-sm lg:text-base">Why us</a>
-                <a href="#works" className="block text-white font-roboto text-xs sm:text-sm lg:text-base">Gallery</a>
+                <a href="#" className="block text-white font-roboto text-xs sm:text-sm lg:text-base">Main</a>
+                <a href="#" className="block text-white font-roboto text-xs sm:text-sm lg:text-base">Why us</a>
+                <a href="#" className="block text-white font-roboto text-xs sm:text-sm lg:text-base">Gallery</a>
               </div>
 
               <div className="space-y-3 sm:space-y-4 lg:space-y-6">
-                <a href="#about" className="block text-white font-roboto text-xs sm:text-sm lg:text-base">About us</a>
-                <a href="#reviews" className="block text-white font-roboto text-xs sm:text-sm lg:text-base">Review</a>
+                <a href="#" className="block text-white font-roboto text-xs sm:text-sm lg:text-base">About us</a>
+                <a href="#" className="block text-white font-roboto text-xs sm:text-sm lg:text-base">Review</a>
               </div>
             </div>
 
