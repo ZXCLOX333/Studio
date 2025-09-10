@@ -1227,7 +1227,7 @@ export default function Index() {
           <div className="md:flex md:items-start gap-8 lg:gap-16">
             <div className="md:flex-shrink-0">
             <img
-              src="https://api.builder.io/api/v1/image/assets/TEMP/f265ff5e73d48434a6a1a7c106bd975fc7e5ce90?width=814"
+              src="/images/master.jpg"
               alt="Галина Попович"
                 className="w-full max-w-[200px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] h-auto object-cover rounded-[22px] mx-auto md:mx-0 md:mt-0"
             />
@@ -1260,7 +1260,7 @@ export default function Index() {
         style={{ marginLeft: "calc(50% - 50vw)", marginRight: "calc(50% - 50vw)" }}
       >
         <h2
-          className="font-cormorant font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-tattoo-light mb-[20px] sm:mb-[30px] lg:mb-[40px] text-center lg:text-left xl:text-left lg:ml-[475px] xl:ml-[475px]"
+          className="font-cormorant font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-tattoo-light mb-[20px] sm:mb-[30px] lg:mb-[40px] text-center"
         >
           Наші клієнти
         </h2>
@@ -1527,7 +1527,7 @@ export default function Index() {
             </div>
 
             <div className="flex gap-4 lg:gap-6 justify-center">
-              <a href="#" className="p-2 lg:p-4">
+              <a href="https://t.me/Galinka28830" target="_blank" rel="noopener noreferrer" className="p-2 lg:p-4">
                 <svg width="62" height="62" viewBox="0 0 62 62" fill="none" className="w-12 h-12 lg:w-[62px] lg:h-[62px]">
                   <path d="M31.0003 5.1665C16.7403 5.1665 2.66699 16.7398 2.66699 30.9998C2.66699 45.2598 16.7403 56.8332 31.0003 56.8332C45.2603 56.8332 56.8337 45.2598 56.8337 30.9998C56.8337 16.7398 45.2603 5.1665 31.0003 5.1665ZM42.987 22.7332C42.5995 26.8148 40.9203 36.7348 40.0678 41.3073C39.7062 43.2448 38.9828 43.8907 38.3112 43.9682C36.8128 44.0973 35.6762 42.9865 34.2295 42.0307C31.9562 40.5323 30.6645 39.6023 28.4687 38.1557C25.9112 36.4765 27.5645 35.5465 29.037 34.0482C29.4245 33.6607 36.0378 27.6415 36.167 27.099C36.1849 27.0168 36.1825 26.9315 36.16 26.8505C36.1375 26.7695 36.0956 26.6951 36.0378 26.634C35.8828 26.5048 35.6762 26.5565 35.4953 26.5823C35.2628 26.634 31.6462 29.0365 24.5937 33.7898C23.5603 34.4873 22.6303 34.849 21.8037 34.8232C20.8737 34.7973 19.117 34.3065 17.7995 33.8673C16.172 33.3507 14.9062 33.0665 15.0095 32.1623C15.0612 31.6973 15.707 31.2323 16.9212 30.7415C24.4645 27.4607 29.4762 25.2907 31.982 24.2573C39.1637 21.2607 40.6362 20.744 41.6178 20.744C41.8245 20.744 42.3153 20.7957 42.6253 21.054C42.8837 21.2607 42.9612 21.5448 42.987 21.7515C42.9612 21.9065 43.0128 22.3715 42.987 22.7332Z" fill="#E7E6E6"/>
                 </svg>
