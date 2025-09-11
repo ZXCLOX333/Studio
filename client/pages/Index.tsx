@@ -1333,10 +1333,10 @@ export default function Index() {
               encType="multipart/form-data"
             >
               <div
-                className="rounded-[22px] w-[407px] min-h-[213px] flex flex-col p-6"
+                className="rounded-[22px] w-[407px] min-h-[240px] flex flex-col p-6"
                 style={{
                   minWidth: 407,
-                  minHeight: 213,
+                  minHeight: 240,
                   maxWidth: 407,
                   background: "rgba(59,59,59,0.15)",
                   boxShadow: "0 4px 12px 0 rgba(0,0,0,0.10)"
@@ -1426,7 +1426,7 @@ export default function Index() {
                 </div>
                 </div>
                 {/* Кнопки під формою з відступом */}
-                <div className="w-full flex gap-4 justify-center mt-6">
+                <div className="w-full flex gap-4 justify-center mt-10">
                   <button
                     type="button"
                     className="px-4 py-2 rounded-[14px] bg-gray-500 text-white text-base font-montserrat font-semibold"
