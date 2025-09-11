@@ -1333,10 +1333,10 @@ export default function Index() {
               encType="multipart/form-data"
             >
               <div
-                className="rounded-[22px] w-[407px] min-h-[240px] flex flex-col p-6"
+                className="rounded-[22px] w-[407px] min-h-[213px] flex flex-col p-6"
                 style={{
                   minWidth: 407,
-                  minHeight: 240,
+                  minHeight: 213,
                   maxWidth: 407,
                   background: "rgba(59,59,59,0.15)",
                   boxShadow: "0 4px 12px 0 rgba(0,0,0,0.10)"
@@ -1425,33 +1425,33 @@ export default function Index() {
                   />
                 </div>
                 </div>
-                {/* Кнопки під формою з відступом */}
-                <div className="w-full flex gap-4 justify-center mt-10">
-                  <button
-                    type="button"
-                    className="px-4 py-2 rounded-[14px] bg-gray-500 text-white text-base font-montserrat font-semibold"
-                    onClick={() => setShowReviewModal(false)}
-                    style={{
-                      minWidth: 90,
-                      fontSize: 14,
-                      paddingTop: 6,
-                      paddingBottom: 6,
-                    }}
-                  >
-                    Скасувати
-                  </button>
-                  <button
-                    type="submit"
-                    className="px-[40px] py-[16px] rounded-[22px] bg-tattoo-primary hover:bg-tattoo-primary/90 text-[#E7E6E6] font-montserrat font-semibold text-xl leading-4 tracking-[0px]"
-                    style={{
-                      fontSize: 18,
-                      paddingTop: 10,
-                      paddingBottom: 10,
-                    }}
-                  >
-                    Додати
-                  </button>
-                </div>
+              </div>
+              {/* Кнопки під формою з однаковим відступом на всіх адаптивах */}
+              <div className="w-full flex gap-4 justify-center mt-6">
+                <button
+                  type="button"
+                  className="px-4 py-2 rounded-[14px] bg-gray-500 text-white text-base font-montserrat font-semibold"
+                  onClick={() => setShowReviewModal(false)}
+                  style={{
+                    minWidth: 90,
+                    fontSize: 14,
+                    paddingTop: 6,
+                    paddingBottom: 6,
+                  }}
+                >
+                  Скасувати
+                </button>
+                <button
+                  type="submit"
+                  className="px-[40px] py-[16px] rounded-[22px] bg-tattoo-primary hover:bg-tattoo-primary/90 text-[#E7E6E6] font-montserrat font-semibold text-xl leading-4 tracking-[0px]"
+                  style={{
+                    fontSize: 18,
+                    paddingTop: 10,
+                    paddingBottom: 10,
+                  }}
+                >
+                  Додати
+                </button>
               </div>
             </form>
           </div>
