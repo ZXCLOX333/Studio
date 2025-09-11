@@ -822,11 +822,11 @@ export default function Index() {
           
           {/* Hamburger Menu */}
           <button 
-            className="text-tattoo-light p-2 bg-tattoo-dark/80 rounded-lg backdrop-blur-sm hover:bg-tattoo-dark/90 transition-all duration-200 hover:scale-105 active:scale-95 z-50"
-            onClick={() => {
-              console.log('Hamburger menu clicked, current state:', isMobileMenuOpen);
-              setIsMobileMenuOpen(!isMobileMenuOpen);
-            }}
+            className="md:hidden w-10 h-10 bg-gray-600 text-white rounded-[6px] flex items-center justify-center active:scale-95 transition z-50"
+            aria-label="Відкрити меню"
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu-panel"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -836,42 +836,46 @@ export default function Index() {
 
         {/* Mobile Menu Dropdown (767px and below) */}
         {isMobileMenuOpen && (
-          <div className="md:hidden fixed top-0 left-0 w-[85%] h-full bg-tattoo-dark z-[9999] mobile-menu-overlay mobile-menu-enter">
-            <div className="flex justify-end p-4">
-              <button 
-                className="text-white p-2 hover:bg-tattoo-orange-light/20 rounded-lg transition-all duration-200 hover:scale-110 active:scale-95"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-            <div className="flex flex-col px-6 space-y-6">
-              <a href="#home" className="mobile-menu-item flex items-center space-x-3 text-white font-open-sans text-lg py-3 border-b border-gray-600" onClick={() => setIsMobileMenuOpen(false)}>
-                <div className="w-2 h-2 bg-gray-400 transform rotate-45"></div>
-                <span className="font-bold">Головна</span>
-              </a>
-              <a href="#why-us" className="mobile-menu-item flex items-center space-x-3 text-gray-300 font-open-sans text-lg py-3 border-b border-gray-600" onClick={() => setIsMobileMenuOpen(false)}>
-                <div className="w-2 h-2 bg-gray-400 transform rotate-45"></div>
-                <span>Чому ми</span>
-              </a>
-              <a href="#works" className="mobile-menu-item flex items-center space-x-3 text-gray-300 font-open-sans text-lg py-3 border-b border-gray-600" onClick={() => setIsMobileMenuOpen(false)}>
-                <div className="w-2 h-2 bg-gray-400 transform rotate-45"></div>
-                <span>Роботи</span>
-              </a>
-              <a href="#about" className="mobile-menu-item flex items-center space-x-3 text-gray-300 font-open-sans text-lg py-3 border-b border-gray-600" onClick={() => setIsMobileMenuOpen(false)}>
-                <div className="w-2 h-2 bg-gray-400 transform rotate-45"></div>
-                <span>Про нас</span>
-              </a>
-              <a href="#reviews" className="mobile-menu-item flex items-center space-x-3 text-gray-300 font-open-sans text-lg py-3 border-b border-gray-600" onClick={() => setIsMobileMenuOpen(false)}>
-                <div className="w-2 h-2 bg-gray-400 transform rotate-45"></div>
-                <span>Відгуки</span>
-              </a>
-              <a href="#contacts" className="mobile-menu-item flex items-center space-x-3 text-gray-300 font-open-sans text-lg py-3 border-b border-gray-600" onClick={() => setIsMobileMenuOpen(false)}>
-                <div className="w-2 h-2 bg-gray-400 transform rotate-45"></div>
-                <span>Контакти</span>
-              </a>
+          <div className="md:hidden fixed inset-0 z-[9999]">
+            <div className="absolute inset-0 bg-black/50" onClick={() => setIsMobileMenuOpen(false)}></div>
+            <div id="mobile-menu-panel" className="absolute top-0 left-0 w-[85%] h-full bg-tattoo-dark mobile-menu-overlay mobile-menu-enter shadow-xl">
+              <div className="flex justify-end p-4">
+                <button 
+                  className="text-white p-2 hover:bg-tattoo-orange-light/20 rounded-lg transition-all duration-200 hover:scale-110 active:scale-95"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  aria-label="Закрити меню"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              <nav className="flex flex-col px-6 space-y-6">
+                <a href="#home" className="mobile-menu-item flex items-center space-x-3 text-white font-open-sans text-lg py-3 border-b border-gray-600" onClick={() => setIsMobileMenuOpen(false)}>
+                  <div className="w-2 h-2 bg-gray-400 transform rotate-45"></div>
+                  <span className="font-bold">Головна</span>
+                </a>
+                <a href="#why-us" className="mobile-menu-item flex items-center space-x-3 text-gray-300 font-open-sans text-lg py-3 border-b border-gray-600" onClick={() => setIsMobileMenuOpen(false)}>
+                  <div className="w-2 h-2 bg-gray-400 transform rotate-45"></div>
+                  <span>Чому ми</span>
+                </a>
+                <a href="#works" className="mobile-menu-item flex items-center space-x-3 text-gray-300 font-open-sans text-lg py-3 border-b border-gray-600" onClick={() => setIsMobileMenuOpen(false)}>
+                  <div className="w-2 h-2 bg-gray-400 transform rotate-45"></div>
+                  <span>Роботи</span>
+                </a>
+                <a href="#about" className="mobile-menu-item flex items-center space-x-3 text-gray-300 font-open-sans text-lg py-3 border-b border-gray-600" onClick={() => setIsMobileMenuOpen(false)}>
+                  <div className="w-2 h-2 bg-gray-400 transform rotate-45"></div>
+                  <span>Про нас</span>
+                </a>
+                <a href="#reviews" className="mobile-menu-item flex items-center space-x-3 text-gray-300 font-open-sans text-lg py-3 border-b border-gray-600" onClick={() => setIsMobileMenuOpen(false)}>
+                  <div className="w-2 h-2 bg-gray-400 transform rotate-45"></div>
+                  <span>Відгуки</span>
+                </a>
+                <a href="#contacts" className="mobile-menu-item flex items-center space-x-3 text-gray-300 font-open-sans text-lg py-3 border-b border-gray-600" onClick={() => setIsMobileMenuOpen(false)}>
+                  <div className="w-2 h-2 bg-gray-400 transform rotate-45"></div>
+                  <span>Контакти</span>
+                </a>
+              </nav>
             </div>
           </div>
         )}
