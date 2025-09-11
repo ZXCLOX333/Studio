@@ -415,6 +415,24 @@ export default function Index() {
     "/videos/video4.mp4"
   ];
   
+  // Синхронізуємо відео з активним індексом через React, без прямої мутації DOM
+  useEffect(() => {
+    const video = activeVideoRef.current;
+    if (!video) return;
+    try {
+      video.src = blockVideos[activeVideoIndex];
+      // Після зміни src перезавантажуємо і відтворюємо (важливо для мобільних браузерів)
+      video.load();
+      const playPromise = video.play();
+      // Деякі браузери повертають проміс
+      if (playPromise && typeof playPromise.then === "function") {
+        playPromise.catch(() => {
+          // Ігноруємо помилку автоплею — відео запуститься після першої взаємодії
+        });
+      }
+    } catch {}
+  }, [activeVideoIndex]);
+  
   // Функція для обробки кліку по блоку - спрощена версія анімації
   const handleBlockClick = (blockId: number) => {
     // Перевіряємо, чи не відбувається вже анімація
@@ -434,14 +452,8 @@ export default function Index() {
     
     // Через 500мс змінюємо відео (після анімації вильоту блоку)
     setTimeout(() => {
+      // Тільки оновлюємо стан — ефект сам синхронізує відео
       setActiveVideoIndex(clickedBlock.id);
-      
-      // Змінюємо відео на фіксоване
-      if (activeVideoRef.current) {
-        activeVideoRef.current.src = blockVideos[clickedBlock.id];
-        activeVideoRef.current.load();
-        activeVideoRef.current.play();
-      }
       
       // Через 300мс оновлюємо позиції блоків (після зміни відео)
       setTimeout(() => {
@@ -696,7 +708,7 @@ export default function Index() {
         <div className="absolute inset-0 bg-cover bg-center">
           <video 
             ref={activeVideoRef}
-            className="absolute inset-0 w-full h-full object-cover video-background"
+            className="absolute inset-0 w-full h-full object-cover video-background pointer-events-none"
             autoPlay 
             muted 
             loop 
@@ -705,7 +717,7 @@ export default function Index() {
             <source src="/videos/video1.mp4" type="video/mp4" />
           </video>
         </div>
-        <div className="absolute inset-0 bg-gradient-radial from-transparent to-black/40" />
+        <div className="absolute inset-0 bg-gradient-radial from-transparent to-black/40 pointer-events-none" />
 
         {/* Navigation - Desktop Only (md and up) */}
         <nav className="hidden md:flex relative z-10 justify-between items-center px-4 sm:px-8 md:px-16 lg:px-[86px] pt-[30px] sm:pt-[40px] lg:pt-[50px]">
@@ -1318,12 +1330,11 @@ export default function Index() {
               encType="multipart/form-data"
             >
               <div
-                className="rounded-[22px] w-[407px] h-[213px] flex flex-row p-6"
+                className="rounded-[22px] w-[407px] min-h-[213px] flex flex-col p-6"
                 style={{
                   minWidth: 407,
                   minHeight: 213,
                   maxWidth: 407,
-                  maxHeight: 213,
                   background: "rgba(59,59,59,0.15)",
                   boxShadow: "0 4px 12px 0 rgba(0,0,0,0.10)"
                 }}
@@ -1349,6 +1360,7 @@ export default function Index() {
                   }
                 }}
               >
+                <div className="flex flex-row gap-4">
                 <div className="flex flex-col items-start flex-shrink-0" style={{ width: 62 }}>
                   {/* Фото завантаження */}
                   <label className="w-[62px] h-[55px] rounded-lg bg-tattoo-dark flex items-center justify-center cursor-pointer overflow-hidden border border-[#444] mb-0">
@@ -1394,7 +1406,7 @@ export default function Index() {
                     />
                   </div>
                 </div>
-                <div className="flex-1 flex flex-col ml-6">
+                <div className="flex-1 flex flex-col">
                   <textarea
                     name="text"
                     value={reviewForm.text}
@@ -1409,35 +1421,34 @@ export default function Index() {
                     }}
                   />
                 </div>
-              </div>
-              <div
-                className="w-full flex gap-4 justify-center absolute left-0 right-0"
-                style={{ bottom: 310, marginTop: 0 }}
-              >
-                <button
-                  type="button"
-                  className="px-4 py-2 rounded-[14px] bg-gray-500 text-white text-base font-montserrat font-semibold"
-                  onClick={() => setShowReviewModal(false)}
-                  style={{
-                    minWidth: 90,
-                    fontSize: 14,
-                    paddingTop: 6,
-                    paddingBottom: 6,
-                  }}
-                >
-                  Скасувати
-                </button>
-                <button
-                  type="submit"
-                  className="px-[40px] py-[16px] rounded-[22px] bg-tattoo-primary hover:bg-tattoo-primary/90 text-[#E7E6E6] font-montserrat font-semibold text-xl leading-4 tracking-[0px]"
-                  style={{
-                    fontSize: 18,
-                    paddingTop: 10,
-                    paddingBottom: 10,
-                  }}
-                >
-                  Додати
-                </button>
+                </div>
+                {/* Кнопки під формою з відступом */}
+                <div className="w-full flex gap-4 justify-center mt-6">
+                  <button
+                    type="button"
+                    className="px-4 py-2 rounded-[14px] bg-gray-500 text-white text-base font-montserrat font-semibold"
+                    onClick={() => setShowReviewModal(false)}
+                    style={{
+                      minWidth: 90,
+                      fontSize: 14,
+                      paddingTop: 6,
+                      paddingBottom: 6,
+                    }}
+                  >
+                    Скасувати
+                  </button>
+                  <button
+                    type="submit"
+                    className="px-[40px] py-[16px] rounded-[22px] bg-tattoo-primary hover:bg-tattoo-primary/90 text-[#E7E6E6] font-montserrat font-semibold text-xl leading-4 tracking-[0px]"
+                    style={{
+                      fontSize: 18,
+                      paddingTop: 10,
+                      paddingBottom: 10,
+                    }}
+                  >
+                    Додати
+                  </button>
+                </div>
               </div>
             </form>
           </div>
