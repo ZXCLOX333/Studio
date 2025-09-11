@@ -175,15 +175,25 @@ function AutoScrollRow({
     }
   };
 
-  // Клонуємо дітей з додаванням обробника кліку
+  // Клонуємо дітей: якщо у дитини вже є власний onClick, нічого не підмішуємо
   const childrenWithProps = React.Children.map(clones, (child, index) => {
-    if (React.isValidElement(child)) {
-      return React.cloneElement(child, {
-        isActive: activeCardIndex === index,
-        onClick: () => handleCardClick(index),
-      } as any);
+    if (!React.isValidElement(child)) return child;
+    const hasOwnOnClick = (child as any).props?.onClick;
+    if (hasOwnOnClick) {
+      // Дитячий елемент керує кліком самостійно (використовується мобільними картками героя)
+      return child;
     }
-    return child;
+
+    const extraProps: any = {
+      onClick: () => handleCardClick(index),
+    };
+
+    // Додаємо isActive лише для неконтролюючих елементів-компонентів (не для голих div/span)
+    if (typeof child.type !== 'string') {
+      extraProps.isActive = activeCardIndex === index;
+    }
+
+    return React.cloneElement(child, extraProps);
   });
 
   return (
