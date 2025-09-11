@@ -1328,7 +1328,7 @@ export default function Index() {
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
             <form
               onSubmit={handleReviewSubmit}
-              className="bg-transparent flex items-center justify-center"
+              className="bg-transparent flex flex-col items-center justify-center"
               style={{ boxShadow: "none" }}
               encType="multipart/form-data"
             >
@@ -1426,8 +1426,8 @@ export default function Index() {
                 </div>
                 </div>
               </div>
-              {/* Кнопки під формою з однаковим відступом на всіх адаптивах */}
-              <div className="w-full flex gap-4 justify-center mt-6">
+              {/* Кнопки під формою (універсальний відступ) */}
+              <div className="w-[407px] flex gap-4 justify-center mt-6">
                 <button
                   type="button"
                   className="px-4 py-2 rounded-[14px] bg-gray-500 text-white text-base font-montserrat font-semibold"
