@@ -425,23 +425,6 @@ export default function Index() {
     "/videos/video4.mp4"
   ];
   
-  // Синхронізуємо відео з активним індексом через React, без прямої мутації DOM
-  useEffect(() => {
-    const video = activeVideoRef.current;
-    if (!video) return;
-    try {
-      video.src = blockVideos[activeVideoIndex];
-      // Після зміни src перезавантажуємо і відтворюємо (важливо для мобільних браузерів)
-      video.load();
-      const playPromise = video.play();
-      // Деякі браузери повертають проміс
-      if (playPromise && typeof playPromise.then === "function") {
-        playPromise.catch(() => {
-          // Ігноруємо помилку автоплею — відео запуститься після першої взаємодії
-        });
-      }
-    } catch {}
-  }, [activeVideoIndex]);
   
   // Функція для обробки кліку по блоку - спрощена версія анімації
   const handleBlockClick = (blockId: number) => {
@@ -718,13 +701,23 @@ export default function Index() {
         <div className="absolute inset-0 bg-cover bg-center">
           <video 
             ref={activeVideoRef}
+            key={activeVideoIndex}
             className="absolute inset-0 w-full h-full object-cover video-background pointer-events-none"
             autoPlay 
             muted 
             loop 
             playsInline
+            preload="auto"
+            onCanPlay={(e) => {
+              const v = e.currentTarget as HTMLVideoElement;
+              const p = v.play();
+              if (p && typeof p.then === 'function') p.catch(() => {});
+            }}
+            onError={() => {
+              if (activeVideoIndex !== 0) setActiveVideoIndex(0);
+            }}
           >
-            <source src="/videos/video1.mp4" type="video/mp4" />
+            <source src={blockVideos[activeVideoIndex]} type="video/mp4" />
           </video>
         </div>
         <div className="absolute inset-0 bg-gradient-radial from-transparent to-black/40 pointer-events-none" />
@@ -1048,7 +1041,7 @@ export default function Index() {
                       margin: '7px'
                     }}
                   />
-                    <p className="text-black font-open-sans font-bold text-base leading-[18px] tracking-[-0.64px] p-1 flex-1" style={{ textShadow: '0px 0px 2px rgba(255, 255, 255, 0.7)' }}>
+                    <p className="text-black font-open-sans font-bold text-[17px] leading-[20px] tracking-[-0.64px] p-1 flex-1" style={{ textShadow: '0px 0px 2px rgba(255, 255, 255, 0.7)' }}>
                       {block.text}
                     </p>
                   </div>
