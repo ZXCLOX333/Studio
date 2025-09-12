@@ -1422,7 +1422,7 @@ export default function Index() {
                     placeholder="Ваш відгук"
                     required
                     style={{
-                      minHeight: 60,
+                      minHeight: 120,
                       marginTop: 0,
                       marginBottom: 8,
                     }}
