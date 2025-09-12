@@ -838,7 +838,7 @@ export default function Index() {
         {isMobileMenuOpen && (
           <div className="md:hidden fixed inset-0 z-[9999]">
             <div className="absolute inset-0 bg-black/50" onClick={() => setIsMobileMenuOpen(false)}></div>
-            <div id="mobile-menu-panel" className="absolute top-0 left-0 w-[85%] h-full bg-tattoo-dark text-white mobile-menu-overlay mobile-menu-enter shadow-xl">
+            <div id="mobile-menu-panel" className="absolute top-0 left-0 w-[85%] h-full bg-tattoo-dark text-white mobile-menu-overlay shadow-xl z-10">
               <div className="flex justify-end p-4">
                 <button 
                   className="text-white p-2 hover:bg-tattoo-orange-light/20 rounded-lg transition-all duration-200 hover:scale-110 active:scale-95"
