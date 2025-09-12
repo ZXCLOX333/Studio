@@ -838,7 +838,7 @@ export default function Index() {
         {isMobileMenuOpen && (
           <div className="md:hidden fixed inset-0 z-[9999]">
             <div className="absolute inset-0 bg-black/50" onClick={() => setIsMobileMenuOpen(false)}></div>
-            <div id="mobile-menu-panel" className="absolute top-0 left-0 w-[85%] h-full bg-tattoo-dark mobile-menu-overlay mobile-menu-enter shadow-xl">
+            <div id="mobile-menu-panel" className="absolute top-0 left-0 w-[85%] h-full bg-tattoo-dark text-white mobile-menu-overlay mobile-menu-enter shadow-xl">
               <div className="flex justify-end p-4">
                 <button 
                   className="text-white p-2 hover:bg-tattoo-orange-light/20 rounded-lg transition-all duration-200 hover:scale-110 active:scale-95"
@@ -850,28 +850,28 @@ export default function Index() {
                   </svg>
                 </button>
               </div>
-              <nav className="flex flex-col px-6 space-y-6">
+              <nav className="flex flex-col px-6 space-y-6 overflow-y-auto pb-10">
                 <a href="#home" className="mobile-menu-item flex items-center space-x-3 text-white font-open-sans text-lg py-3 border-b border-gray-600" onClick={() => setIsMobileMenuOpen(false)}>
                   <div className="w-2 h-2 bg-gray-400 transform rotate-45"></div>
                   <span className="font-bold">Головна</span>
                 </a>
-                <a href="#why-us" className="mobile-menu-item flex items-center space-x-3 text-gray-300 font-open-sans text-lg py-3 border-b border-gray-600" onClick={() => setIsMobileMenuOpen(false)}>
+                <a href="#why-us" className="mobile-menu-item flex items-center space-x-3 text-white font-open-sans text-lg py-3 border-b border-gray-600" onClick={() => setIsMobileMenuOpen(false)}>
                   <div className="w-2 h-2 bg-gray-400 transform rotate-45"></div>
                   <span>Чому ми</span>
                 </a>
-                <a href="#works" className="mobile-menu-item flex items-center space-x-3 text-gray-300 font-open-sans text-lg py-3 border-b border-gray-600" onClick={() => setIsMobileMenuOpen(false)}>
+                <a href="#works" className="mobile-menu-item flex items-center space-x-3 text-white font-open-sans text-lg py-3 border-b border-gray-600" onClick={() => setIsMobileMenuOpen(false)}>
                   <div className="w-2 h-2 bg-gray-400 transform rotate-45"></div>
                   <span>Роботи</span>
                 </a>
-                <a href="#about" className="mobile-menu-item flex items-center space-x-3 text-gray-300 font-open-sans text-lg py-3 border-b border-gray-600" onClick={() => setIsMobileMenuOpen(false)}>
+                <a href="#about" className="mobile-menu-item flex items-center space-x-3 text-white font-open-sans text-lg py-3 border-b border-gray-600" onClick={() => setIsMobileMenuOpen(false)}>
                   <div className="w-2 h-2 bg-gray-400 transform rotate-45"></div>
                   <span>Про нас</span>
                 </a>
-                <a href="#reviews" className="mobile-menu-item flex items-center space-x-3 text-gray-300 font-open-sans text-lg py-3 border-b border-gray-600" onClick={() => setIsMobileMenuOpen(false)}>
+                <a href="#reviews" className="mobile-menu-item flex items-center space-x-3 text-white font-open-sans text-lg py-3 border-b border-gray-600" onClick={() => setIsMobileMenuOpen(false)}>
                   <div className="w-2 h-2 bg-gray-400 transform rotate-45"></div>
                   <span>Відгуки</span>
                 </a>
-                <a href="#contacts" className="mobile-menu-item flex items-center space-x-3 text-gray-300 font-open-sans text-lg py-3 border-b border-gray-600" onClick={() => setIsMobileMenuOpen(false)}>
+                <a href="#contacts" className="mobile-menu-item flex items-center space-x-3 text-white font-open-sans text-lg py-3 border-b border-gray-600" onClick={() => setIsMobileMenuOpen(false)}>
                   <div className="w-2 h-2 bg-gray-400 transform rotate-45"></div>
                   <span>Контакти</span>
                 </a>
