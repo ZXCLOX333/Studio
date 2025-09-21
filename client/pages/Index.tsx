@@ -1610,7 +1610,7 @@ export default function Index() {
             </div>
 
             <div className="space-y-3 sm:space-y-4 lg:space-y-6 text-center lg:text-right">
-              <p className="text-white font-roboto text-xs sm:text-sm lg:text-base">Created by Oleksandr Kostyrko</p>
+              <p className="text-white font-roboto text-xs sm:text-sm lg:text-base">Created by Mariana Kostyrko</p>
               <p className="text-white font-roboto text-xs sm:text-sm lg:text-base">Contact:</p>
               <p className="text-white font-roboto text-xs sm:text-sm lg:text-base">Telegram — @KreeeKl</p>
             </div>
