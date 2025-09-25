@@ -1061,7 +1061,7 @@ export default function Index() {
         {/* Stats */}
         <div className="absolute bottom-0 left-0 right-0 bg-tattoo-dark h-[100px] sm:h-[120px] md:h-[140px] lg:h-[158px] flex items-center justify-between px-4 sm:px-8 md:px-16 lg:px-[301px]">
           <div className="text-left md:ml-[30px] lg:ml-[50px] min-w-0 flex-1 lg:flex-none">
-            <h3 className="text-[#E7E6E6] font-open-sans font-semibold text-sm sm:text-base md:text-xl lg:text-[26px] leading-4 tracking-[0.52px] mb-2 sm:mb-4 md:mb-6 lg:mb-[37px] lg:text-left">Нас обрало 200+ людей</h3>
+            <h3 className="text-[#E7E6E6] font-open-sans font-semibold text-sm sm:text-base md:text-xl lg:text-[26px] leading-4 tracking-[0.52px] mb-2 sm:mb-4 md:mb-6 lg:mb-[37px] lg:text-left">Нас обрало 500+ людей</h3>
             <p className="text-[#E7E6E6] font-open-sans font-semibold text-sm sm:text-base md:text-xl lg:text-[26px] leading-4 tracking-[0.52px] lg:text-left">Ми працюємо з 2023</p>
           </div>
           <div className="text-center flex flex-col items-center gap-2 sm:gap-3 md:gap-4 lg:gap-[19px] lg:mt-[37px] ml-8 sm:ml-12 md:ml-16 lg:ml-24">
