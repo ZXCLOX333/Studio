@@ -537,6 +537,7 @@ export default function Index() {
   const [showReviewModal, setShowReviewModal] = useState(false);
   const [reviewForm, setReviewForm] = useState({ avatar: "", text: "", stars: 5 });
   const [lastAddedRow, setLastAddedRow] = useState<1 | 2>(2);
+  const [reviewStatus, setReviewStatus] = useState<"idle" | "success" | "error">("idle");
 
   // --- Запис на тату ---
   const [showBookingModal, setShowBookingModal] = useState(false);
@@ -551,6 +552,7 @@ export default function Index() {
   const handleAddReview = () => {
     setShowReviewModal(true);
     setReviewForm({ avatar: "", text: "", stars: 5 });
+    setReviewStatus("idle");
   };
 
   const handleReviewFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -576,10 +578,11 @@ export default function Index() {
     
     try {
       await addReview({ avatar, text, stars });
-      setShowReviewModal(false);
-      setReviewForm({ avatar: "", text: "", stars: 5 });
+      setReviewStatus("success");
+      setReviewForm({ avatar: "", text: "", stars });
     } catch (err) {
       console.error('Failed to add review:', err);
+      setReviewStatus("error");
     }
   };
 
@@ -1369,6 +1372,34 @@ export default function Index() {
                   }
                 }}
               >
+                {/* Статус додавання відгуку */}
+                {reviewStatus !== "idle" && (
+                  <div className="mb-3">
+                    <div className="flex items-center gap-2 text-white font-montserrat font-semibold text-base mb-2">
+                      <span
+                        className={`inline-flex h-5 w-5 items-center justify-center rounded-full border ${
+                          reviewStatus === "success"
+                            ? "border-green-400 text-green-400"
+                            : "border-red-400 text-red-400"
+                        }`}
+                        aria-hidden="true"
+                      >
+                        {reviewStatus === "success" ? "✓" : "✕"}
+                      </span>
+                      <span>
+                        {reviewStatus === "success"
+                          ? "Відгук додано"
+                          : "Відгук не додано"}
+                      </span>
+                    </div>
+                    {reviewStatus === "error" && (
+                      <p className="text-xs text-red-300 font-open-sans mb-3">
+                        Сталась помилка, спробуйте пізніше знову.
+                      </p>
+                    )}
+                  </div>
+                )}
+
                 <div className="flex flex-row gap-4">
                 <div className="flex flex-col items-start flex-shrink-0" style={{ width: 62 }}>
                   {/* Фото завантаження */}
