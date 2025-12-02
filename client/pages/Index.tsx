@@ -1094,25 +1094,25 @@ export default function Index() {
             />
           </div>
 
-            <div className="flex-1 space-y-2 leading-normal text-lg w-full max-w-[500px] lg:max-w-none xl:max-w-none">
+            <div className="flex-1 space-y-2 leading-normal text-lg w-full lg:max-w-none xl:max-w-none">
                           <div>
                 <h3 className="font-cormorant font-semibold text-lg sm:text-xl md:text-2xl lg:text-[30px] text-tattoo-light mb-2 sm:mb-3 md:mb-[7px] lg:mb-[8px] text-center md:text-left lg:text-left xl:text-left">Безпека</h3>
-                <p className="font-open-sans text-sm sm:text-base md:text-sm lg:text-xs text-tattoo-light leading-5 sm:leading-6 lg:leading-3 max-w-[400px] mx-auto md:mx-0 lg:mx-0 xl:mx-0 text-center md:text-left lg:text-left xl:text-left">Мастер використовує тільки стерільні інструменти та надає повну інструкцію для загоєння тату</p>
+                <p className="font-open-sans text-sm sm:text-base md:text-sm lg:text-xs text-tattoo-light leading-5 sm:leading-6 lg:leading-3 mx-auto md:mx-0 text-center md:text-left lg:text-left xl:text-left">Мастер використовує тільки стерільні інструменти та надає повну інструкцію для загоєння тату</p>
               </div>
 
               <div>
                 <h3 className="font-cormorant font-semibold text-lg sm:text-xl md:text-2xl lg:text-[30px] text-tattoo-light mb-2 sm:mb-3 md:mb-[7px] lg:mb-[8px] text-center md:text-left lg:text-left xl:text-left">Якість</h3>
-                <p className="font-open-sans text-sm sm:text-base md:text-sm lg:text-xs text-tattoo-light leading-5 sm:leading-6 lg:leading-3 max-w-[400px] mx-auto md:mx-0 lg:mx-0 xl:mx-0 text-center md:text-left lg:text-left xl:text-left">Ми використовуємо виключно преміальні матеріали, та найкращі техніки татуювання</p>
+                <p className="font-open-sans text-sm sm:text-base md:text-sm lg:text-xs text-tattoo-light leading-5 sm:leading-6 lg:leading-3 mx-auto md:mx-0 text-center md:text-left lg:text-left xl:text-left">Ми використовуємо виключно преміальні матеріали, та найкращі техніки татуювання</p>
               </div>
 
               <div>
                 <h3 className="font-cormorant font-semibold text-lg sm:text-xl md:text-2xl lg:text-[30px] text-tattoo-light mb-2 sm:mb-3 md:mb-[7px] lg:mb-[8px] text-center md:text-left lg:text-left xl:text-left">Стиль</h3>
-                <p className="font-open-sans text-sm sm:text-base md:text-sm lg:text-xs text-tattoo-light leading-5 sm:leading-6 lg:leading-3 max-w-[400px] mx-auto md:mx-0 lg:mx-0 xl:mx-0 text-center md:text-left lg:text-left xl:text-left">Трайбл, неотрайбл, олд скул, треш полька, чикано, японія, флористика, аніме, графіка</p>
+                <p className="font-open-sans text-sm sm:text-base md:text-sm lg:text-xs text-tattoo-light leading-5 sm:leading-6 lg:leading-3 mx-auto md:mx-0 text-center md:text-left lg:text-left xl:text-left">Трайбл, неотрайбл, олд скул, треш полька, чикано, японія, флористика, аніме, графіка</p>
               </div>
 
               <div>
                 <h3 className="font-cormorant font-semibold text-lg sm:text-xl md:text-2xl lg:text-[30px] text-tattoo-light mb-2 sm:mb-3 md:mb-[7px] lg:mb-[8px] text-center md:text-left lg:text-left xl:text-left">Розробка ескізів</h3>
-                <p className="font-open-sans text-sm sm:text-base md:text-sm lg:text-xs text-tattoo-light leading-5 sm:leading-6 lg:leading-3 max-w-[400px] mx-auto md:mx-0 lg:mx-0 xl:mx-0 text-center md:text-left lg:text-left xl:text-left">Ми розробляємо ескізи понад 3 роки — і ще жодного негативного відгуку</p>
+                <p className="font-open-sans text-sm sm:text-base md:text-sm lg:text-xs text-tattoo-light leading-5 sm:leading-6 lg:leading-3 mx-auto md:mx-0 text-center md:text-left lg:text-left xl:text-left">Ми розробляємо ескізи понад 3 роки — і ще жодного негативного відгуку</p>
             </div>
               </div>
           </div>
