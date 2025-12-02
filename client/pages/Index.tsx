@@ -537,7 +537,7 @@ export default function Index() {
   const [showReviewModal, setShowReviewModal] = useState(false);
   const [reviewForm, setReviewForm] = useState({ avatar: "", text: "", stars: 5 });
   const [lastAddedRow, setLastAddedRow] = useState<1 | 2>(2);
-  const [reviewStatus, setReviewStatus] = useState<"idle" | "success" | "error">("idle");
+  const [reviewStatus, setReviewStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
 
   // --- Запис на тату ---
   const [showBookingModal, setShowBookingModal] = useState(false);
@@ -573,9 +573,12 @@ export default function Index() {
     const text = reviewForm.text.trim();
     const stars = reviewForm.stars > 0 ? reviewForm.stars : 5;
     if (!text) return;
-    
-    
-    
+
+    // Показуємо індикатор обробки ще до відповіді сервера
+    setReviewStatus("processing");
+    // Очищаємо текст, щоб було видно статус
+    setReviewForm(prev => ({ ...prev, text: "" }));
+
     try {
       await addReview({ avatar, text, stars });
       setReviewStatus("success");
@@ -1375,27 +1378,39 @@ export default function Index() {
                 {/* Статус додавання відгуку */}
                 {reviewStatus !== "idle" && (
                   <div className="mb-3">
-                    <div className="flex items-center gap-2 text-white font-montserrat font-semibold text-base mb-2">
-                      <span
-                        className={`inline-flex h-5 w-5 items-center justify-center rounded-full border ${
-                          reviewStatus === "success"
-                            ? "border-green-400 text-green-400"
-                            : "border-red-400 text-red-400"
-                        }`}
-                        aria-hidden="true"
-                      >
-                        {reviewStatus === "success" ? "✓" : "✕"}
-                      </span>
-                      <span>
-                        {reviewStatus === "success"
-                          ? "Відгук додано"
-                          : "Відгук не додано"}
-                      </span>
-                    </div>
-                    {reviewStatus === "error" && (
-                      <p className="text-xs text-red-300 font-open-sans mb-3">
-                        Сталась помилка, спробуйте пізніше знову.
-                      </p>
+                    {reviewStatus === "processing" ? (
+                      <div className="flex items-center gap-2 text-white font-montserrat font-semibold text-base mb-2">
+                        <span
+                          className="inline-flex h-5 w-5 items-center justify-center rounded-full border border-t-transparent border-white/70 animate-spin"
+                          aria-hidden="true"
+                        />
+                        <span>Обробка відгуку</span>
+                      </div>
+                    ) : (
+                      <>
+                        <div className="flex items-center gap-2 text-white font-montserrat font-semibold text-base mb-2">
+                          <span
+                            className={`inline-flex h-5 w-5 items-center justify-center rounded-full border ${
+                              reviewStatus === "success"
+                                ? "border-green-400 text-green-400"
+                                : "border-red-400 text-red-400"
+                            }`}
+                            aria-hidden="true"
+                          >
+                            {reviewStatus === "success" ? "✓" : "✕"}
+                          </span>
+                          <span>
+                            {reviewStatus === "success"
+                              ? "Відгук додано"
+                              : "Відгук не додано"}
+                          </span>
+                        </div>
+                        {reviewStatus === "error" && (
+                          <p className="text-xs text-red-300 font-open-sans mb-3">
+                            Сталась помилка, спробуйте пізніше знову.
+                          </p>
+                        )}
+                      </>
                     )}
                   </div>
                 )}
@@ -1451,13 +1466,22 @@ export default function Index() {
                     name="text"
                     value={reviewForm.text}
                     onChange={handleReviewFormChange}
+                    onInput={(e) => {
+                      const el = e.currentTarget;
+                      el.style.height = "auto";
+                      const maxHeight = 200;
+                      const newHeight = Math.min(el.scrollHeight, maxHeight);
+                      el.style.height = `${newHeight}px`;
+                    }}
                     className="text-tattoo-light font-open-sans text-sm lg:text-base leading-5 lg:leading-6 bg-transparent resize-none outline-none border border-[#444] rounded-[8px] p-2 flex-1"
                     placeholder="Ваш відгук"
                     required
                     style={{
-                      minHeight: 200,
+                      minHeight: 160,
+                      maxHeight: 200,
                       marginTop: 0,
                       marginBottom: 8,
+                      overflowY: "auto",
                     }}
                   />
                 </div>
