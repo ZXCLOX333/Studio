@@ -27,7 +27,7 @@ const TestimonialCard = ({
   <div
     className={`bg-tattoo-card shadow-[0_4px_12px_0_rgba(0,0,0,0.10)] rounded-[22px] w-full max-w-[407px] md:w-[407px] flex flex-row p-6 ${isActive ? 'active-card' : ''}`}
     style={{ 
-      minWidth: 320,
+      minWidth: 407, 
       minHeight: isActive ? "auto" : 213, 
       maxWidth: 407, 
       height: isActive ? "auto" : 213,
@@ -707,7 +707,7 @@ export default function Index() {
             muted 
             loop 
             playsInline
-            preload="auto"
+            preload="metadata"
             onCanPlay={(e) => {
               const v = e.currentTarget as HTMLVideoElement;
               const p = v.play();
@@ -1123,22 +1123,22 @@ export default function Index() {
           <div className="hidden 2xl:block">
             {/* Перший ряд - вирівняно по верху, фото "вилазять" на різну висоту */}
             <div className="flex gap-[24px] mb-[-52px] items-start">
-              <img src="https://api.builder.io/api/v1/image/assets/TEMP/7bf5d6b88d00b3a14f3dd477fca48fafc969fdb9?width=814" alt="Tattoo work" className="w-[407px] h-[371px] object-cover" />
-              <img src="https://api.builder.io/api/v1/image/assets/TEMP/c8139526398390e5c9068377e35bc80e915a6cd8?width=382" alt="Tattoo work" className="w-[191px] h-[292px] object-cover" />
-              <img src="https://api.builder.io/api/v1/image/assets/TEMP/ce63a58850de289f84ee0b1df9667b61ef387d74?width=382" alt="Tattoo work" className="w-[191px] h-[292px] object-cover" />
+              <img loading="lazy" decoding="async" src="https://api.builder.io/api/v1/image/assets/TEMP/7bf5d6b88d00b3a14f3dd477fca48fafc969fdb9?width=814" alt="Tattoo work" className="w-[407px] h-[371px] object-cover" />
+              <img loading="lazy" decoding="async" src="https://api.builder.io/api/v1/image/assets/TEMP/c8139526398390e5c9068377e35bc80e915a6cd8?width=382" alt="Tattoo work" className="w-[191px] h-[292px] object-cover" />
+              <img loading="lazy" decoding="async" src="https://api.builder.io/api/v1/image/assets/TEMP/ce63a58850de289f84ee0b1df9667b61ef387d74?width=382" alt="Tattoo work" className="w-[191px] h-[292px] object-cover" />
             </div>
 
             {/* Другий ряд - вирівняно по низу, фото "вилазять" вгору */}
             <div className="flex gap-[24px] mb-[24px] items-end">
-              <img src="https://api.builder.io/api/v1/image/assets/TEMP/f33e9b71494e16c52531fa71493e53c483e30d43?width=382" alt="Tattoo work" className="w-[191px] h-[292px] object-cover" />
-              <img src="https://api.builder.io/api/v1/image/assets/TEMP/f6d3175f695a7c537d71e2515dae222595f1e024?width=382" alt="Tattoo work" className="w-[191px] h-[292px] object-cover" />
-              <img src="https://api.builder.io/api/v1/image/assets/TEMP/9a31716473ebbd3780c2dc4f280d4e029167daeb?width=814" alt="Tattoo work" className="w-[407px] h-[371px] object-cover" />
+              <img loading="lazy" decoding="async" src="https://api.builder.io/api/v1/image/assets/TEMP/f33e9b71494e16c52531fa71493e53c483e30d43?width=382" alt="Tattoo work" className="w-[191px] h-[292px] object-cover" />
+              <img loading="lazy" decoding="async" src="https://api.builder.io/api/v1/image/assets/TEMP/f6d3175f695a7c537d71e2515dae222595f1e024?width=382" alt="Tattoo work" className="w-[191px] h-[292px] object-cover" />
+              <img loading="lazy" decoding="async" src="https://api.builder.io/api/v1/image/assets/TEMP/9a31716473ebbd3780c2dc4f280d4e029167daeb?width=814" alt="Tattoo work" className="w-[407px] h-[371px] object-cover" />
             </div>
 
             {/* Третій ряд - однакова висота */}
             <div className="flex gap-[24px]">
-              <img src="https://api.builder.io/api/v1/image/assets/TEMP/b366a598ef34fe1447b9bd3fc9e842d33bd44b51?width=814" alt="Tattoo work" className="w-[407px] h-[213px] object-cover" />
-              <img src="https://api.builder.io/api/v1/image/assets/TEMP/b134efed15cbc04674051d948bb1dc8872e83885?width=812" alt="Tattoo work" className="w-[406px] h-[213px] object-cover" />
+              <img loading="lazy" decoding="async" src="https://api.builder.io/api/v1/image/assets/TEMP/b366a598ef34fe1447b9bd3fc9e842d33bd44b51?width=814" alt="Tattoo work" className="w-[407px] h-[213px] object-cover" />
+              <img loading="lazy" decoding="async" src="https://api.builder.io/api/v1/image/assets/TEMP/b134efed15cbc04674051d948bb1dc8872e83885?width=812" alt="Tattoo work" className="w-[406px] h-[213px] object-cover" />
             </div>
           </div>
 
@@ -1148,35 +1148,35 @@ export default function Index() {
                           <div className="lg:hidden grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="relative w-full h-[200px] rounded-lg overflow-hidden">
                   <div className="absolute inset-0 bg-cover bg-center blur-xl" style={{ backgroundImage: `url(https://api.builder.io/api/v1/image/assets/TEMP/7bf5d6b88d00b3a14f3dd477fca48fafc969fdb9?width=814)` }}></div>
-                  <img src="https://api.builder.io/api/v1/image/assets/TEMP/7bf5d6b88d00b3a14f3dd477fca48fafc969fdb9?width=814" alt="Tattoo work" className="relative w-full h-full object-contain z-10" />
+                  <img loading="lazy" decoding="async" src="https://api.builder.io/api/v1/image/assets/TEMP/7bf5d6b88d00b3a14f3dd477fca48fafc969fdb9?width=814" alt="Tattoo work" className="relative w-full h-full object-contain z-10" />
                 </div>
                 <div className="relative w-full h-[200px] rounded-lg overflow-hidden">
                   <div className="absolute inset-0 bg-cover bg-center blur-xl" style={{ backgroundImage: `url(https://api.builder.io/api/v1/image/assets/TEMP/c8139526398390e5c9068377e35bc80e915a6cd8?width=382)` }}></div>
-                  <img src="https://api.builder.io/api/v1/image/assets/TEMP/c8139526398390e5c9068377e35bc80e915a6cd8?width=382" alt="Tattoo work" className="relative w-full h-full object-contain z-10" />
+                  <img loading="lazy" decoding="async" src="https://api.builder.io/api/v1/image/assets/TEMP/c8139526398390e5c9068377e35bc80e915a6cd8?width=382" alt="Tattoo work" className="relative w-full h-full object-contain z-10" />
                 </div>
                 <div className="relative w-full h-[200px] rounded-lg overflow-hidden">
                   <div className="absolute inset-0 bg-cover bg-center blur-xl" style={{ backgroundImage: `url(https://api.builder.io/api/v1/image/assets/TEMP/ce63a58850de289f84ee0b1df9667b61ef387d74?width=382)` }}></div>
-                  <img src="https://api.builder.io/api/v1/image/assets/TEMP/ce63a58850de289f84ee0b1df9667b61ef387d74?width=382" alt="Tattoo work" className="relative w-full h-full object-contain z-10" />
+                  <img loading="lazy" decoding="async" src="https://api.builder.io/api/v1/image/assets/TEMP/ce63a58850de289f84ee0b1df9667b61ef387d74?width=382" alt="Tattoo work" className="relative w-full h-full object-contain z-10" />
                 </div>
                 <div className="relative w-full h-[200px] rounded-lg overflow-hidden">
                   <div className="absolute inset-0 bg-cover bg-center blur-xl" style={{ backgroundImage: `url(https://api.builder.io/api/v1/image/assets/TEMP/f33e9b71494e16c52531fa71493e53c483e30d43?width=382)` }}></div>
-                  <img src="https://api.builder.io/api/v1/image/assets/TEMP/f33e9b71494e16c52531fa71493e53c483e30d43?width=382" alt="Tattoo work" className="relative w-full h-full object-contain z-10" />
+                  <img loading="lazy" decoding="async" src="https://api.builder.io/api/v1/image/assets/TEMP/f33e9b71494e16c52531fa71493e53c483e30d43?width=382" alt="Tattoo work" className="relative w-full h-full object-contain z-10" />
                 </div>
                 <div className="relative w-full h-[200px] rounded-lg overflow-hidden">
                   <div className="absolute inset-0 bg-cover bg-center blur-xl" style={{ backgroundImage: `url(https://api.builder.io/api/v1/image/assets/TEMP/f6d3175f695a7c537d71e2515dae222595f1e024?width=382)` }}></div>
-                  <img src="https://api.builder.io/api/v1/image/assets/TEMP/f6d3175f695a7c537d71e2515dae222595f1e024?width=382" alt="Tattoo work" className="relative w-full h-full object-contain z-10" />
+                  <img loading="lazy" decoding="async" src="https://api.builder.io/api/v1/image/assets/TEMP/f6d3175f695a7c537d71e2515dae222595f1e024?width=382" alt="Tattoo work" className="relative w-full h-full object-contain z-10" />
                 </div>
                 <div className="relative w-full h-[200px] rounded-lg overflow-hidden">
                   <div className="absolute inset-0 bg-cover bg-center blur-xl" style={{ backgroundImage: `url(https://api.builder.io/api/v1/image/assets/TEMP/9a31716473ebbd3780c2dc4f280d4e029167daeb?width=814)` }}></div>
-                  <img src="https://api.builder.io/api/v1/image/assets/TEMP/9a31716473ebbd3780c2dc4f280d4e029167daeb?width=814" alt="Tattoo work" className="relative w-full h-full object-contain z-10" />
+                  <img loading="lazy" decoding="async" src="https://api.builder.io/api/v1/image/assets/TEMP/9a31716473ebbd3780c2dc4f280d4e029167daeb?width=814" alt="Tattoo work" className="relative w-full h-full object-contain z-10" />
                 </div>
                 <div className="relative w-full h-[200px] rounded-lg overflow-hidden">
                   <div className="absolute inset-0 bg-cover bg-center blur-xl" style={{ backgroundImage: `url(https://api.builder.io/api/v1/image/assets/TEMP/b366a598ef34fe1447b9bd3fc9e842d33bd44b51?width=814)` }}></div>
-                  <img src="https://api.builder.io/api/v1/image/assets/TEMP/b366a598ef34fe1447b9bd3fc9e842d33bd44b51?width=814" alt="Tattoo work" className="relative w-full h-full object-contain z-10" />
+                  <img loading="lazy" decoding="async" src="https://api.builder.io/api/v1/image/assets/TEMP/b366a598ef34fe1447b9bd3fc9e842d33bd44b51?width=814" alt="Tattoo work" className="relative w-full h-full object-contain z-10" />
                 </div>
                 <div className="relative w-full h-[200px] rounded-lg overflow-hidden">
                   <div className="absolute inset-0 bg-cover bg-center blur-xl" style={{ backgroundImage: `url(https://api.builder.io/api/v1/image/assets/TEMP/b134efed15cbc04674051d948bb1dc8872e83885?width=812)` }}></div>
-                  <img src="https://api.builder.io/api/v1/image/assets/TEMP/b134efed15cbc04674051d948bb1dc8872e83885?width=812" alt="Tattoo work" className="relative w-full h-full object-contain z-10" />
+                  <img loading="lazy" decoding="async" src="https://api.builder.io/api/v1/image/assets/TEMP/b134efed15cbc04674051d948bb1dc8872e83885?width=812" alt="Tattoo work" className="relative w-full h-full object-contain z-10" />
                 </div>
               </div>
 
@@ -1246,6 +1246,8 @@ export default function Index() {
           <div className="md:flex md:items-start gap-8 lg:gap-16">
             <div className="md:flex-shrink-0">
             <img
+              loading="lazy"
+              decoding="async"
               src="/images/master.jpg"
               alt="Галина Попович"
                 className="w-full max-w-[200px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] h-auto object-cover rounded-[22px] mx-auto md:mx-0 md:mt-0"
@@ -1337,10 +1339,11 @@ export default function Index() {
               encType="multipart/form-data"
             >
               <div
-                className="rounded-[22px] w-full max-w-[407px] min-h-[213px] flex flex-col p-6 mx-4"
+                className="rounded-[22px] w-[407px] min-h-[213px] flex flex-col p-6"
                 style={{
-                  minWidth: "min(100%, 407px)",
+                  minWidth: 407,
                   minHeight: 213,
+                  maxWidth: 407,
                   background: "rgba(59,59,59,0.15)",
                   boxShadow: "0 4px 12px 0 rgba(0,0,0,0.10)"
                 }}
@@ -1430,7 +1433,7 @@ export default function Index() {
                 </div>
               </div>
               {/* Кнопки під формою (універсальний відступ) */}
-              <div className="w-full max-w-[407px] flex gap-4 justify-center mt-6 px-4">
+              <div className="w-[407px] flex gap-4 justify-center mt-6">
                 <button
                   type="button"
                   className="px-4 py-2 rounded-[14px] bg-gray-500 text-white text-base font-montserrat font-semibold"
@@ -1470,6 +1473,8 @@ export default function Index() {
           <div className="w-full lg:w-[348px] flex flex-col">
             <div className="aspect-square lg:h-[316px] rounded-[22px] bg-tattoo-card shadow-[0_4px_12px_0_rgba(0,0,0,0.10)] p-4">
               <img
+                loading="lazy"
+                decoding="async"
                 src="https://api.builder.io/api/v1/image/assets/TEMP/6b9b4d63ca038b931514fc5bb0898ca9b834d4d7?width=640"
                 alt="Location map"
                 className="w-full h-full object-cover rounded-lg"
