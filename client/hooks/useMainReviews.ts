@@ -108,23 +108,25 @@ export function useMainReviews() {
       const apiReviews: Review[] = data.reviews || [];
       
       // Конвертуємо API відгуки в формат для UI
-                        const uiReviews: MainReview[] = apiReviews.map(review => {
-                    const stars = review.stars !== undefined ? review.stars : 5;
-                    return {
+      const uiReviews: MainReview[] = apiReviews.map(review => {
+        const stars = review.stars !== undefined ? review.stars : 5;
+        return {
           id: review.id,
           text: review.text,
           createdAt: review.createdAt,
           avatar: review.avatar || "https://api.builder.io/api/v1/image/assets/TEMP/50539832474100cc93c13a30455d91939b986e3b?width=124",
-          stars: stars
+          stars,
         };
       });
-      
-      // Розподіляємо відгуки між двома рядками
-      const allReviews = [...defaultReviews1, ...defaultReviews2, ...uiReviews];
-      const half = Math.ceil(allReviews.length / 2);
-      
-      setReviews1(allReviews.slice(0, half));
-      setReviews2(allReviews.slice(half));
+
+      // Ділимо ТІЛЬКИ динамічні (GitHub) відгуки:
+      // парні індекси (0,2,4,...) -> верхній ряд
+      // непарні (1,3,5,...)       -> нижній ряд
+      const dynamicTop = uiReviews.filter((_, idx) => idx % 2 === 0);
+      const dynamicBottom = uiReviews.filter((_, idx) => idx % 2 === 1);
+
+      setReviews1([...defaultReviews1, ...dynamicTop]);
+      setReviews2([...defaultReviews2, ...dynamicBottom]);
       
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load reviews');
@@ -168,25 +170,10 @@ export function useMainReviews() {
         avatar: data.review.avatar || review.avatar,
         stars: data.review.stars !== undefined ? data.review.stars : (review.stars !== undefined ? review.stars : 5),
       };
-
-      // Оптимістично додаємо новий відгук до поточного стану,
-      // щоб користувач одразу бачив результат, без додаткового очікування.
-      setReviews1((prev1) => {
-        const combined = [...prev1, ...reviews2, newReview];
-        const half = Math.ceil(combined.length / 2);
-        return combined.slice(0, half);
-      });
-      setReviews2((prev2) => {
-        const combined = [...reviews1, ...prev2, newReview];
-        const half = Math.ceil(combined.length / 2);
-        return combined.slice(half);
-      });
-
-      // Асинхронно оновлюємо повний список з бекенду,
-      // але не блокуємо закриття вікна.
-      loadReviews().catch((err) => {
-        console.error('Error reloading reviews after add:', err);
-      });
+      
+      // Після успішного запису перечитуємо список,
+      // щоб коректно розкласти динамічні відгуки по рядках (парні/непарні).
+      await loadReviews();
       
       return newReview;
     } catch (err) {
