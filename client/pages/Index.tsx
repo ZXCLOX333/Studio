@@ -27,7 +27,7 @@ const TestimonialCard = ({
   <div
     className={`bg-tattoo-card shadow-[0_4px_12px_0_rgba(0,0,0,0.10)] rounded-[22px] w-full max-w-[407px] md:w-[407px] flex flex-row p-6 ${isActive ? 'active-card' : ''}`}
     style={{ 
-      minWidth: 407, 
+      minWidth: 320,
       minHeight: isActive ? "auto" : 213, 
       maxWidth: 407, 
       height: isActive ? "auto" : 213,
@@ -1337,11 +1337,10 @@ export default function Index() {
               encType="multipart/form-data"
             >
               <div
-                className="rounded-[22px] w-[407px] min-h-[213px] flex flex-col p-6"
+                className="rounded-[22px] w-full max-w-[407px] min-h-[213px] flex flex-col p-6 mx-4"
                 style={{
-                  minWidth: 407,
+                  minWidth: "min(100%, 407px)",
                   minHeight: 213,
-                  maxWidth: 407,
                   background: "rgba(59,59,59,0.15)",
                   boxShadow: "0 4px 12px 0 rgba(0,0,0,0.10)"
                 }}
@@ -1431,7 +1430,7 @@ export default function Index() {
                 </div>
               </div>
               {/* Кнопки під формою (універсальний відступ) */}
-              <div className="w-[407px] flex gap-4 justify-center mt-6">
+              <div className="w-full max-w-[407px] flex gap-4 justify-center mt-6 px-4">
                 <button
                   type="button"
                   className="px-4 py-2 rounded-[14px] bg-gray-500 text-white text-base font-montserrat font-semibold"

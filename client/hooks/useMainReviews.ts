@@ -144,7 +144,7 @@ export function useMainReviews() {
       setIsLoading(true);
       setError(null);
       
-  const response = await fetch('/api/reviews', {
+      const response = await fetch('/api/reviews', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -166,11 +166,27 @@ export function useMainReviews() {
         text: data.review.text,
         createdAt: data.review.createdAt,
         avatar: data.review.avatar || review.avatar,
-        stars: data.review.stars !== undefined ? data.review.stars : (review.stars !== undefined ? review.stars : 5)
+        stars: data.review.stars !== undefined ? data.review.stars : (review.stars !== undefined ? review.stars : 5),
       };
-      
-      // Перезавантажуємо всі відгуки після додавання нового
-      await loadReviews();
+
+      // Оптимістично додаємо новий відгук до поточного стану,
+      // щоб користувач одразу бачив результат, без додаткового очікування.
+      setReviews1((prev1) => {
+        const combined = [...prev1, ...reviews2, newReview];
+        const half = Math.ceil(combined.length / 2);
+        return combined.slice(0, half);
+      });
+      setReviews2((prev2) => {
+        const combined = [...reviews1, ...prev2, newReview];
+        const half = Math.ceil(combined.length / 2);
+        return combined.slice(half);
+      });
+
+      // Асинхронно оновлюємо повний список з бекенду,
+      // але не блокуємо закриття вікна.
+      loadReviews().catch((err) => {
+        console.error('Error reloading reviews after add:', err);
+      });
       
       return newReview;
     } catch (err) {
