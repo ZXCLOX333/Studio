@@ -168,12 +168,38 @@ export function useMainReviews() {
         text: data.review.text,
         createdAt: data.review.createdAt,
         avatar: data.review.avatar || review.avatar,
-        stars: data.review.stars !== undefined ? data.review.stars : (review.stars !== undefined ? review.stars : 5),
+        stars:
+          data.review.stars !== undefined
+            ? data.review.stars
+            : review.stars !== undefined
+            ? review.stars
+            : 5,
       };
-      
-      // Після успішного запису перечитуємо список,
-      // щоб коректно розкласти динамічні відгуки по рядках (парні/непарні).
-      await loadReviews();
+
+      // Визначаємо, в який рядок додати новий динамічний відгук:
+      // Рахуємо, скільки вже є динамічних (GitHub) відгуків у кожному ряду
+      const dynamicTopCount = Math.max(
+        reviews1.length - defaultReviews1.length,
+        0,
+      );
+      const dynamicBottomCount = Math.max(
+        reviews2.length - defaultReviews2.length,
+        0,
+      );
+      const nextIndex = dynamicTopCount + dynamicBottomCount;
+
+      if (nextIndex % 2 === 0) {
+        // парний індекс -> верхній рядок
+        setReviews1((prev) => [...prev, newReview]);
+      } else {
+        // непарний індекс -> нижній рядок
+        setReviews2((prev) => [...prev, newReview]);
+      }
+
+      // Фонове оновлення з сервера, без блокування закриття модалки
+      loadReviews().catch((err) => {
+        console.error('Error reloading reviews after add:', err);
+      });
       
       return newReview;
     } catch (err) {
