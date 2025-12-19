@@ -385,14 +385,14 @@ export default function Index() {
   const [blocks, setBlocks] = useState([
     {
       id: 0,
-      image: "https://api.builder.io/api/v1/image/assets/TEMP/65e67ca781f633b42b9ecce634c50d433e35befb?width=280",
+      image: "/images/1.png",
       text: "Тату яке нагадає вам про ваші мрії",
       position: 0, // 0 - верхній, 1 - середній, 2 - нижній
       animationClass: ""
     },
     {
       id: 1,
-      image: "https://api.builder.io/api/v1/image/assets/TEMP/04a2e6388ab29696a2fed6636b344068e530e2f1?width=280",
+      image: "/images/3.JPG",
       text: "Сміливе рішення, висока нагорода",
       position: 1,
       animationClass: ""
@@ -407,8 +407,8 @@ export default function Index() {
     {
       id: 3,
       // Використовуємо зображення з тату "Memento Mori"
-      image: "/photo_2025-08-25_23-13-22.jpg",
-      text: "Життя - це усьоголиш мить",
+      image: "/images/2.jpg",
+      text: "Воля, що не знає меж",
       position: 3, // Блок, який зараз на задньому фоні
       animationClass: ""
     }
@@ -714,6 +714,7 @@ export default function Index() {
             loop 
             playsInline
             preload="metadata"
+            poster="/images/1.png"
             onCanPlay={(e) => {
               const v = e.currentTarget as HTMLVideoElement;
               const p = v.play();
@@ -1095,26 +1096,42 @@ export default function Index() {
           </div>
 
             <div className="flex-1 space-y-2 leading-normal text-lg w-full lg:max-w-none xl:max-w-none">
-                          <div>
-                <h3 className="font-cormorant font-semibold text-lg sm:text-xl md:text-2xl lg:text-[30px] text-tattoo-light mb-2 sm:mb-3 md:mb-[7px] lg:mb-[8px] text-center md:text-left lg:text-left xl:text-left">Безпека</h3>
-                <p className="font-open-sans text-sm sm:text-base md:text-sm lg:text-xs text-tattoo-light leading-5 sm:leading-6 lg:leading-3 mx-auto md:mx-0 text-center md:text-left lg:text-left xl:text-left">Мастер використовує тільки стерільні інструменти та надає повну інструкцію для загоєння тату</p>
+              <div>
+                <h3 className="font-cormorant font-semibold text-xl sm:text-2xl md:text-3xl lg:text-[32px] text-tattoo-light mb-2 sm:mb-3 md:mb-[7px] lg:mb-[8px] text-center md:text-left lg:text-left xl:text-left">
+                  Безпека
+                </h3>
+                <p className="font-open-sans text-sm sm:text-base md:text-sm lg:text-xs text-tattoo-light leading-5 sm:leading-6 lg:leading-3 mx-auto md:mx-0 text-justify md:text-left lg:text-left xl:text-left">
+                  Мастер використовує тільки стерільні інструменти та надає повну інструкцію для загоєння тату
+                </p>
               </div>
 
               <div>
-                <h3 className="font-cormorant font-semibold text-lg sm:text-xl md:text-2xl lg:text-[30px] text-tattoo-light mb-2 sm:mb-3 md:mb-[7px] lg:mb-[8px] text-center md:text-left lg:text-left xl:text-left">Якість</h3>
-                <p className="font-open-sans text-sm sm:text-base md:text-sm lg:text-xs text-tattoo-light leading-5 sm:leading-6 lg:leading-3 mx-auto md:mx-0 text-center md:text-left lg:text-left xl:text-left">Ми використовуємо виключно преміальні матеріали, та найкращі техніки татуювання</p>
+                <h3 className="font-cormorant font-semibold text-xl sm:text-2xl md:text-3xl lg:text-[32px] text-tattoo-light mb-2 sm:mb-3 md:mb-[7px] lg:mb-[8px] text-center md:text-left lg:text-left xl:text-left">
+                  Якість
+                </h3>
+                <p className="font-open-sans text-sm sm:text-base md:text-sm lg:text-xs text-tattoo-light leading-5 sm:leading-6 lg:leading-3 mx-auto md:mx-0 text-justify md:text-left lg:text-left xl:text-left">
+                  Ми використовуємо виключно преміальні матеріали, та найкращі техніки татуювання
+                </p>
               </div>
 
               <div>
-                <h3 className="font-cormorant font-semibold text-lg sm:text-xl md:text-2xl lg:text-[30px] text-tattoo-light mb-2 sm:mb-3 md:mb-[7px] lg:mb-[8px] text-center md:text-left lg:text-left xl:text-left">Стиль</h3>
-                <p className="font-open-sans text-sm sm:text-base md:text-sm lg:text-xs text-tattoo-light leading-5 sm:leading-6 lg:leading-3 mx-auto md:mx-0 text-center md:text-left lg:text-left xl:text-left">Трайбл, неотрайбл, олд скул, треш полька, чикано, японія, флористика, аніме, графіка</p>
+                <h3 className="font-cormorant font-semibold text-xl sm:text-2xl md:text-3xl lg:text-[32px] text-tattoo-light mb-2 sm:mb-3 md:mb-[7px] lg:mb-[8px] text-center md:text-left lg:text-left xl:text-left">
+                  Стиль
+                </h3>
+                <p className="font-open-sans text-sm sm:text-base md:text-sm lg:text-xs text-tattoo-light leading-5 sm:leading-6 lg:leading-3 mx-auto md:mx-0 text-justify md:text-left lg:text-left xl:text-left">
+                  Трайбл, неотрайбл, олд скул, треш полька, чикано, японія, флористика, аніме, графіка
+                </p>
               </div>
 
               <div>
-                <h3 className="font-cormorant font-semibold text-lg sm:text-xl md:text-2xl lg:text-[30px] text-tattoo-light mb-2 sm:mb-3 md:mb-[7px] lg:mb-[8px] text-center md:text-left lg:text-left xl:text-left">Розробка ескізів</h3>
-                <p className="font-open-sans text-sm sm:text-base md:text-sm lg:text-xs text-tattoo-light leading-5 sm:leading-6 lg:leading-3 mx-auto md:mx-0 text-center md:text-left lg:text-left xl:text-left">Ми розробляємо ескізи понад 3 роки — і ще жодного негативного відгуку</p>
+                <h3 className="font-cormorant font-semibold text-xl sm:text-2xl md:text-3xl lg:text-[32px] text-tattoo-light mb-2 sm:mb-3 md:mb-[7px] lg:mb-[8px] text-center md:text-left lg:text-left xl:text-left">
+                  Розробка ескізів
+                </h3>
+                <p className="font-open-sans text-sm sm:text-base md:text-sm lg:text-xs text-tattoo-light leading-5 sm:leading-6 lg:leading-3 mx-auto md:mx-0 text-justify md:text-left lg:text-left xl:text-left">
+                  Ми розробляємо ескізи понад 3 роки — і ще жодного негативного відгуку
+                </p>
+              </div>
             </div>
-              </div>
           </div>
         </div>
       </section>
@@ -1263,15 +1280,15 @@ export default function Index() {
             <div className="mt-4 md:mt-0 md:ml-6 flex-1 space-y-4 lg:space-y-6">
               <h3 className="text-xl font-bold text-tattoo-light text-center md:text-left">Попович Галина</h3>
 
-              <p className="font-open-sans text-sm sm:text-base md:text-lg lg:text-lg text-tattoo-light leading-5 sm:leading-6 lg:leading-7 text-center md:text-left">
+              <p className="font-open-sans text-sm sm:text-base md:text-lg lg:text-lg text-tattoo-light leading-5 sm:leading-6 lg:leading-7 text-justify md:text-left">
                 Малювання це моє найулюбленіше заняття, я завжди малюю у вільний час. За життя я навчилась малювати в багатьох техніках і будь якими матеріалами. Наприклад: картини на холстах акрилом та маслом, графічні малюнки, простими або кольоровими олівцями.
               </p>
 
-              <p className="font-open-sans text-sm sm:text-base md:text-lg lg:text-lg text-tattoo-light leading-5 sm:leading-6 lg:leading-7 text-center md:text-left">
+              <p className="font-open-sans text-sm sm:text-base md:text-lg lg:text-lg text-tattoo-light leading-5 sm:leading-6 lg:leading-7 text-justify md:text-left">
                 Окрім малювання займаюсь рукоділлям, роблю різноманітні елементи декору на замовлення, які прикрашають та роблять оселі людей затишними.
               </p>
 
-              <p className="font-open-sans text-sm sm:text-base md:text-lg lg:text-lg text-tattoo-light leading-5 sm:leading-6 lg:leading-7 text-center md:text-left">
+              <p className="font-open-sans text-sm sm:text-base md:text-lg lg:text-lg text-tattoo-light leading-5 sm:leading-6 lg:leading-7 text-justify md:text-left">
                 Я обрала професію тату майстра тому, що для мене креативність та мистецтво — це більше ніж просто хоббі. Це сенс робити сірі будні кольоровими, за це я люблю свою роботу.
               </p>
             </div>
