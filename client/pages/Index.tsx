@@ -385,14 +385,14 @@ export default function Index() {
   const [blocks, setBlocks] = useState([
     {
       id: 0,
-      image: "/images/1.png",
+      image: "/images/knight.jpg",
       text: "Тату яке нагадає вам про ваші мрії",
       position: 0, // 0 - верхній, 1 - середній, 2 - нижній
       animationClass: ""
     },
     {
       id: 1,
-      image: "/images/3.JPG",
+      image: "/images/3.avif",
       text: "Сміливе рішення, висока нагорода",
       position: 1,
       animationClass: ""
@@ -714,7 +714,7 @@ export default function Index() {
             loop 
             playsInline
             preload="metadata"
-            poster="/images/1.png"
+            poster="/videos/video1.mp4"
             onCanPlay={(e) => {
               const v = e.currentTarget as HTMLVideoElement;
               const p = v.play();
